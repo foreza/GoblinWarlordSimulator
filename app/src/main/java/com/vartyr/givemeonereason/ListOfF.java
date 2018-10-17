@@ -1,16 +1,17 @@
 package com.vartyr.givemeonereason;
 
+import android.net.Uri;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class ListOfF extends AppCompatActivity {
-
-
+public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
 
 
     // TODO: Write the backend. We'll add/remove locally for now for the 1st prototype.
@@ -23,7 +24,6 @@ public class ListOfF extends AppCompatActivity {
      Of course, If you tell us what you can't be bothered to give a fuck about.
      */
     int baseCounterOfF = 10;        // Base counter. Modify and balance this.
-
 
     /*
     The list of fucks that we actually give and a list of fucks we don't.
@@ -46,8 +46,8 @@ public class ListOfF extends AppCompatActivity {
 
      */
 
-    String [] listOfFToGive = {"Job", "Food", "Roommate", "Gym and gym buddies", "Immediate Family", "EX-idtech groupies", "Legal Portal", "Car", "Good fuckin music"};     // List of things we care about.
-    String [] listOfIDGAF = {""};       // List of things we actually don't give a flying f about.
+    public String [] listOfFToGive = {"Job", "Food", "Roommate", "Gym and gym buddies", "Immediate Family", "EX-idtech groupies", "Legal Portal", "Car", "Good fuckin music"};     // List of things we care about.
+    public FragmentManager fragmentManager;     // For any fragments we need to call / add
 
 
     @Override
@@ -56,6 +56,9 @@ public class ListOfF extends AppCompatActivity {
         setContentView(R.layout.activity_list_of_f);
 
         generateListOfF();
+
+        fragmentManager = getSupportFragmentManager();
+
 
     }
 
@@ -79,8 +82,23 @@ public class ListOfF extends AppCompatActivity {
 
     public void addNewFToListOfF(View view) {
 
+
+        fragmentManager
+                .beginTransaction()
+                .add(R.id.addAF, AddAF.newInstance())
+                .commit();
+        Log.d("[CC", "Created frag");
+
         // Trigger a pop-up
 
+    }
+
+    public void onFragmentInteraction(){
+
+        fragmentManager
+                .beginTransaction()
+                .remove(getSupportFragmentManager().findFragmentById(R.id.addAF))
+                .commit();
 
         ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -91,7 +109,5 @@ public class ListOfF extends AppCompatActivity {
         tv.setLayoutParams(lparams);
         tv.setText("test");
         sv.addView(tv);
-
-
     }
 }

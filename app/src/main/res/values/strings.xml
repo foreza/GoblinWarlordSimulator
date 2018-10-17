@@ -3,4 +3,7 @@
     <string name="counter_f_text"># of fucks left to give: </string>
     <string name="counter_f_num">fucks</string>
     <string name="list_title_f">A list of things I give a eff about:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

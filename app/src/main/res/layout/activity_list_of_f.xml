@@ -45,6 +45,7 @@
 
     <ScrollView
 
+        android:id="@+id/scrollView2"
         android:layout_width="350dp"
         android:layout_height="308dp"
         android:layout_marginEnd="8dp"
@@ -63,6 +64,19 @@
             android:orientation="vertical" />
     </ScrollView>
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/addAF"
+        android:layout_width="280dp"
+        android:layout_height="319dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -71,6 +85,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:clickable="true"
+        android:onClick="addNewFToListOfF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/star_big_on" />
