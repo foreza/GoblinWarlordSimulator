@@ -17,7 +17,15 @@
     <Button
         android:id="@+id/addAF_close"
         android:layout_width="119dp"
-        android:layout_height="67dp"
-        android:text="Button" />
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+    <EditText
+        android:id="@+id/addAF_editText"
+        android:layout_width="351dp"
+        android:layout_height="187dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="What do I care about" />
 
 </FrameLayout>

@@ -1,6 +1,5 @@
 package com.vartyr.givemeonereason;
 
-import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
@@ -57,13 +55,14 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_f);
         initApp();
+        generateListOfF();
+
     }
 
 
     // JC: A function that will do variable assignment for the scope of this class and call required SDK inits
     public void initApp() {
 
-        generateListOfF();
         fragmentManager = getSupportFragmentManager();
         lparams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
