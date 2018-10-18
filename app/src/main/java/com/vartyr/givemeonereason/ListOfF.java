@@ -63,7 +63,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
     }
 
 
-    // This will dynamically generate the list of F and add them to the the scroll view.
+    // JC: This will dynamically generate the list of F and add them to the the scroll view.
     private void generateListOfF() {
 
         ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
@@ -71,17 +71,16 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
 
         LinearLayout sv = findViewById(R.id.listOfF);
 
-
+        // Iterate through all the list items and add them top the view.
         for (int i = 0; i < listOfFToGive.length; ++i) {
-            TextView tv=new TextView(this);
-            tv.setLayoutParams(lparams);
-            tv.setText(listOfFToGive[i]);
-            sv.addView(tv);
+            sv.addView(util_configureFListItem(listOfFToGive[i], lparams));
         }
     }
 
-    public void addNewFToListOfF(View view) {
 
+    // JC: This function will be triggered by pressing the button on the lower right.
+    // It will start a fragment to allow you to add something.
+    public void addNewFToListOfF(View view) {
 
         fragmentManager
                 .beginTransaction()
@@ -89,11 +88,10 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
                 .commit();
         Log.d("[CC", "Created frag");
 
-        // Trigger a pop-up
-
     }
 
-    public void onFragmentInteraction(){
+    // JC: Fragment listener
+    public void onFragmentInteraction(String text){
 
         fragmentManager
                 .beginTransaction()
@@ -107,7 +105,22 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
 
         TextView tv=new TextView(this);
         tv.setLayoutParams(lparams);
-        tv.setText("test");
+        tv.setText(text);
         sv.addView(tv);
+    }
+
+
+    // JC: Util function that will return a TextView to be appended into the view
+    public TextView util_configureFListItem(String text, ViewGroup.LayoutParams lp) {
+
+        TextView tv = new TextView(this);
+        tv.setClickable(true);
+        tv.setLayoutParams(lp);
+        tv.setText(text);
+
+        // TODO: MAKE this responsive / do sommething
+
+        return tv;
+
     }
 }

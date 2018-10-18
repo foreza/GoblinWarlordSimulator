@@ -52,12 +52,7 @@ public class AddAF extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-
     }
 
     @Override
@@ -75,7 +70,7 @@ public class AddAF extends Fragment {
             public void onClick(View v)
             {
                 Log.d("[CC", "onFragmentInteraction");
-                mListener.onFragmentInteraction();
+                mListener.onFragmentInteraction("passed from addAF");
             }
         });
 
@@ -114,6 +109,6 @@ public class AddAF extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction();
+        void onFragmentInteraction(String text);
     }
 }
