@@ -48,26 +48,31 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
 
     public String [] listOfFToGive = {"Job", "Food", "Roommate", "Gym and gym buddies", "Immediate Family", "EX-idtech groupies", "Legal Portal", "Car", "Good fuckin music"};     // List of things we care about.
     public FragmentManager fragmentManager;     // For any fragments we need to call / add
+    public ViewGroup.LayoutParams lparams;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_f);
+        initApp();
+    }
+
+
+    // JC: A function that will do variable assignment for the scope of this class and call required SDK inits
+    public void initApp() {
 
         generateListOfF();
-
         fragmentManager = getSupportFragmentManager();
-
+        lparams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
     }
 
 
     // JC: This will dynamically generate the list of F and add them to the the scroll view.
-    private void generateListOfF() {
-
-        ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    public void generateListOfF() {
 
         LinearLayout sv = findViewById(R.id.listOfF);
 
@@ -90,6 +95,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
 
     }
 
+
     // JC: Fragment listener
     public void onFragmentInteraction(String text){
 
@@ -97,9 +103,6 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
                 .beginTransaction()
                 .remove(getSupportFragmentManager().findFragmentById(R.id.addAF))
                 .commit();
-
-        ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         LinearLayout sv = findViewById(R.id.listOfF);
 
