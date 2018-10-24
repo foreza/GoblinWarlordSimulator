@@ -46,6 +46,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
 
     public String [] listOfFToGive = {"Job", "Food", "Roommate", "Gym and gym buddies", "Immediate Family", "EX-idtech groupies", "Legal Portal", "Car", "Good fuckin music"};     // List of things we care about.
     public FragmentManager fragmentManager;     // For any fragments we need to call / add
+    public String LOG_TAG = "[GMOR]";
     public ViewGroup.LayoutParams lparams;
 
 
@@ -90,7 +91,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
                 .beginTransaction()
                 .add(R.id.addAF, AddAF.newInstance())
                 .commit();
-        Log.d("[CC", "Created frag");
+        Log.d(LOG_TAG, "Created a fragment");
 
     }
 

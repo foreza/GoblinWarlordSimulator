@@ -70,7 +70,7 @@ public class AddAF extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Log.d("[CC", "onFragmentInteraction");
+                Log.d("ADDAF", "onFragmentInteraction");
 
                 // Get text from the editText
 
