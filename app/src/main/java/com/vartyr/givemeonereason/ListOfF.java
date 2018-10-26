@@ -7,7 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.inmobi.ads.InMobiBanner;
+import com.inmobi.sdk.InMobiSdk;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
 
@@ -48,6 +55,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
     public FragmentManager fragmentManager;     // For any fragments we need to call / add
     public String LOG_TAG = "[GMOR]";
     public ViewGroup.LayoutParams lparams;
+    public AdManager adManager;
 
 
 
@@ -58,15 +66,35 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         initApp();
         generateListOfF();
 
+
     }
 
 
     // JC: A function that will do variable assignment for the scope of this class and call required SDK inits
     public void initApp() {
 
+        // Get the adManager
+        adManager = AdManager.getInstance();
+        adManager.initAdSDK(this);
+
+
+        JSONObject consentObject = new JSONObject();
+        try {
+            // Provide correct consent value to sdk which is obtained by User
+            consentObject.put(InMobiSdk.IM_GDPR_CONSENT_AVAILABLE, true);
+            // Provide 0 if GDPR is not applicable and 1 if applicable
+            consentObject.put("gdpr", "0");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        // InMobiSdk.init(this, "d49db34c0ba345adb369335a51aadb7e", consentObject);
+
+
         fragmentManager = getSupportFragmentManager();
         lparams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        loadAndShowBanner();
 
     }
 
@@ -110,6 +138,37 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         tv.setLayoutParams(lparams);
         tv.setText(text);
         sv.addView(tv);
+    }
+
+
+    public void testBanner(View view){
+        loadAndShowBanner();
+    }
+
+    public void loadAndShowBanner(){
+
+        // TEST
+
+
+      //   InMobiBanner bannerAd = new InMobiBanner(this,1540966827839L);
+
+
+        RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
+        RelativeLayout.LayoutParams bannerLp = new RelativeLayout.LayoutParams(640, 100);
+        bannerLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        bannerLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+
+
+//        adContainer.addView(bannerAd,bannerLp);
+//        bannerAd.load();
+
+        View b = adManager.getBanner(this);
+        adContainer.addView(b, bannerLp);
+        adManager.showBanner(b);
+
+
+
+
     }
 
 
