@@ -109,8 +109,11 @@ public class AdManager {
 
 
 
-    public View getBanner(Context ctx){
+    // TODO: Extend and improve these methods to support other SDKs
 
+
+
+    public View getBanner(Context ctx){
         Log.d(LOG_TAG, "getBanner called");
         return createInMobiBanner(ctx);
     }
@@ -121,6 +124,15 @@ public class AdManager {
         loadInMobiBanner(v);
     }
 
+    public void pauseBanner(View v) {
+        Log.d(LOG_TAG, "pauseBanner called");
+        pauseInMobiBanner(v);
+    }
+
+    public void resumeBanner(View v){
+        Log.d(LOG_TAG, "resumeBanner called");
+        resumeInMobiBanner(v);
+    }
 
 
 
@@ -129,15 +141,26 @@ public class AdManager {
 
     private View createInMobiBanner(Context ctx){
         Log.d(LOG_TAG, "createInMobiBanner called");
-        InMobiBanner bannerAd = new InMobiBanner(ctx,IM_BANNER);
-        return bannerAd;
+        InMobiBanner banner = new InMobiBanner(ctx,IM_BANNER);
+        return banner;
     }
 
     private void loadInMobiBanner(View v){
         Log.d(LOG_TAG, "showInMobiBanner called");
         InMobiBanner banner = (InMobiBanner) v;
         banner.load();
+    }
 
+    private void pauseInMobiBanner(View v){
+        Log.d(LOG_TAG, "pauseInMobiBanner called");
+        InMobiBanner banner = (InMobiBanner) v;
+        banner.pause();
+    }
+
+    private void resumeInMobiBanner(View v){
+        Log.d(LOG_TAG, "resumeInMobiBanner called");
+        InMobiBanner banner = (InMobiBanner) v;
+        banner.resume();
     }
 
 

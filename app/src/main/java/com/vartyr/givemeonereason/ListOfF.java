@@ -10,54 +10,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.inmobi.ads.InMobiBanner;
-import com.inmobi.sdk.InMobiSdk;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
 
-
-    // TODO: Write the backend. We'll add/remove locally for now for the 1st prototype.
-    /*
-    // The amount of fucks we give. We'll keep it simple and give you 5 to start with, because let's face it.
-    You consider yourself an adult, but you've probably never done this excercise before, yeah?
-
-    For every fuck you identify that you cannot bring yourself to give..
-     we'll give you an additional fuck to give.
-     Of course, If you tell us what you can't be bothered to give a fuck about.
-     */
-    int baseCounterOfF = 10;        // Base counter. Modify and balance this.
-
-    /*
-    The list of fucks that we actually give and a list of fucks we don't.
-    The idea behind this is:
-    1) Open the app because you're struggling and don't know if you give a fuck
-    2) See a list of fucks that you give?
-    3) It's not on the list?
-    4) Don't give a fuck. Or if it really means that much to you, * add it as a fuck you give.
-
-    * Do remember you only have a limited amount of fucks to give.
-
-    As for the list of fucks we don't give..
-    Sometimes, it's hard. And we know what we give a fuck about.
-    But there are certain things that you need to REMIND yourself to not give a fuck about.
-
-    1) Open the app because you seek validation and want to remember your reason for living
-    2) See the list of fucks you swore not to give
-    3) It's on the list!
-    4) Don't give a fuck. And pat yourself on the back.
-
-     */
-
-    public String [] listOfFToGive = {"Job", "Food", "Roommate", "Gym and gym buddies", "Immediate Family", "EX-idtech groupies", "Legal Portal", "Car", "Good fuckin music"};     // List of things we care about.
-    public FragmentManager fragmentManager;     // For any fragments we need to call / add
+    public String [] listOfFToGive = {"Job", "Food", "Roommate", "Gym and gym buddies", "Immediate Family", "EX-idtech groupies", "Legal Portal", "Car", "Good NICE music"};     // List of things we care about.
+    public FragmentManager fragmentManager;   
     public String LOG_TAG = "[GMOR]";
     public ViewGroup.LayoutParams lparams;
     public AdManager adManager;
-
-
+    public View bannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,37 +26,31 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         setContentView(R.layout.activity_list_of_f);
         initApp();
         generateListOfF();
+        loadAndShowBanner();
+    }
 
+    @Override
+    protected void onPause(){
+        super.onPause();
+        pauseBanner();
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        resumeBanner();
+    }
 
-    // JC: A function that will do variable assignment for the scope of this class and call required SDK inits
+
+    // JC: A function that will do variable assignment for the scope of this class and init all ad sdks from adManager
     public void initApp() {
 
-        // Get the adManager
         adManager = AdManager.getInstance();
         adManager.initAdSDK(this);
-
-
-        JSONObject consentObject = new JSONObject();
-        try {
-            // Provide correct consent value to sdk which is obtained by User
-            consentObject.put(InMobiSdk.IM_GDPR_CONSENT_AVAILABLE, true);
-            // Provide 0 if GDPR is not applicable and 1 if applicable
-            consentObject.put("gdpr", "0");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        // InMobiSdk.init(this, "d49db34c0ba345adb369335a51aadb7e", consentObject);
-
-
         fragmentManager = getSupportFragmentManager();
         lparams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
-        loadAndShowBanner();
-
     }
 
 
@@ -141,35 +96,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
     }
 
 
-    public void testBanner(View view){
-        loadAndShowBanner();
-    }
 
-    public void loadAndShowBanner(){
-
-        // TEST
-
-
-      //   InMobiBanner bannerAd = new InMobiBanner(this,1540966827839L);
-
-
-        RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
-        RelativeLayout.LayoutParams bannerLp = new RelativeLayout.LayoutParams(640, 100);
-        bannerLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        bannerLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-
-
-//        adContainer.addView(bannerAd,bannerLp);
-//        bannerAd.load();
-
-        View b = adManager.getBanner(this);
-        adContainer.addView(b, bannerLp);
-        adManager.showBanner(b);
-
-
-
-
-    }
 
 
     // JC: Util function that will return a TextView to be appended into the view
@@ -185,4 +112,37 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         return tv;
 
     }
+
+
+
+    //region BANNER management from the admanager
+
+    // JC: Method to load and show a banner from the ad manager
+    public void loadAndShowBanner(){
+
+        RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
+        RelativeLayout.LayoutParams bannerLp = new RelativeLayout.LayoutParams(640, 100);
+        bannerLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        bannerLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        bannerView = adManager.getBanner(this);
+        adContainer.addView(bannerView, bannerLp);
+        adManager.showBanner(bannerView);
+
+    }
+
+
+    // JC: Method to pause the banner.
+    public void pauseBanner(){
+        adManager.pauseBanner(bannerView);
+    }
+
+
+    // JC: Method to resume the banner
+    public void resumeBanner(){
+        adManager.resumeBanner(bannerView);
+    }
+    //endregion
+
+
+
 }
