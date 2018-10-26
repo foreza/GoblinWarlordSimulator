@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ListOfF">
 
+
     <TextView
         android:id="@+id/counter_f"
         android:layout_width="wrap_content"
@@ -89,5 +90,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/star_big_on" />
+
+    <com.appodeal.ads.BannerView
+        android:id="@+id/appodealBannerView"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

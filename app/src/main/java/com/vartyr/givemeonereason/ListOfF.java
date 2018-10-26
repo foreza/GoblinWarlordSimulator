@@ -1,5 +1,6 @@
 package com.vartyr.givemeonereason;
 
+import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.appodeal.ads.Appodeal;
+import com.appodeal.ads.BannerCallbacks;
+
+import java.io.UnsupportedEncodingException;
 
 public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
 
@@ -49,6 +55,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
     public String LOG_TAG = "[GMOR]";
     public ViewGroup.LayoutParams lparams;
 
+    String appKey = "610ecf278118c472df8ee14fdf793d9cbc1d883804730296"; // give me one reason
 
 
     @Override
@@ -58,6 +65,40 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         initApp();
         generateListOfF();
 
+
+        String android_id = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        String deviceId = MD5(android_id).toUpperCase();
+
+        Log.d(LOG_TAG + "deviceId: ", deviceId);
+
+
+
+
+    }
+
+    public String MD5(String md5) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes("UTF-8"));
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+        } catch(UnsupportedEncodingException ex){
+        }
+        return null;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Resume the AppoDeal banner
+        Appodeal.onResume(this, Appodeal.BANNER);
+        Appodeal.onResume(this, Appodeal.MREC);
     }
 
 
@@ -67,6 +108,38 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         fragmentManager = getSupportFragmentManager();
         lparams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        // AppoDeal
+//        Appodeal.setTesting(true);
+        Appodeal.setLogLevel(com.appodeal.ads.utils.Log.LogLevel.debug);
+
+        Appodeal.disableLocationPermissionCheck();
+        Appodeal.setBannerViewId(R.id.appodealBannerView);
+//        Appodeal.initialize(this, appKey, Appodeal.INTERSTITIAL | Appodeal.REWARDED_VIDEO | Appodeal.BANNER | Appodeal.NATIVE | Appodeal.MREC);
+        Appodeal.initialize(this, appKey, Appodeal.BANNER);
+        Appodeal.show(this, Appodeal.BANNER_VIEW);
+
+        Appodeal.setBannerCallbacks(new BannerCallbacks() {
+            @Override
+            public void onBannerLoaded(int height, boolean isPrecache) {
+                Log.d(LOG_TAG + "Appodeal", "onBannerLoaded");
+            }
+            @Override
+            public void onBannerFailedToLoad() {
+                Log.d(LOG_TAG+ "Appodeal", "onBannerFailedToLoad");
+            }
+            @Override
+            public void onBannerShown() {
+                Log.d(LOG_TAG + "Appodeal", "onBannerShown");
+            }
+            @Override
+            public void onBannerClicked() {
+                Log.d(LOG_TAG+ "Appodeal", "onBannerClicked");
+            }
+        });
+
+
+
 
     }
 
