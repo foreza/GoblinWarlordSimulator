@@ -23,6 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ListOfF">
+            android:windowSoftInputMode="adjustNothing"
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +33,9 @@
 
 
 
-        <activity android:name=".ListOfIDGAF"></activity>
+        <activity android:name=".ListOfIDGAF">
+            android:windowSoftInputMode="adjustPan"
+        </activity>
 
         <activity
             android:name="com.inmobi.rendering.InMobiAdActivity"

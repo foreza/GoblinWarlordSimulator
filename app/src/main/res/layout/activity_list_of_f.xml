@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ListOfF">
 
+
     <TextView
         android:id="@+id/counter_f"
         android:layout_width="141dp"
@@ -68,37 +69,12 @@
 
     </ScrollView>
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/addAF"
-        android:layout_width="280dp"
-        android:layout_height="319dp"
-        android:layout_centerInParent="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick="testBanner"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/star_big_on" />
-
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/loadBanTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/floatingActionButton"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_below="@+id/scrollView2"
         android:clickable="true"
         android:focusable="true"
         android:onClick="addNewFToListOfF"
@@ -106,5 +82,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/star_big_on" />
+
+
+    <RelativeLayout
+        android:id="@+id/addAF"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"/>
+
 
 </RelativeLayout>

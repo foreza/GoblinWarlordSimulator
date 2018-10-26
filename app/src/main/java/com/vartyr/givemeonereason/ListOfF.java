@@ -1,11 +1,15 @@
 package com.vartyr.givemeonereason;
 
+import android.app.Activity;
+import android.content.res.Resources;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,7 +18,7 @@ import android.widget.TextView;
 public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
 
     public String [] listOfFToGive = {"Job", "Food", "Roommate", "Gym and gym buddies", "Immediate Family", "EX-idtech groupies", "Legal Portal", "Car", "Good NICE music"};     // List of things we care about.
-    public FragmentManager fragmentManager;   
+    public FragmentManager fragmentManager;
     public String LOG_TAG = "[GMOR]";
     public ViewGroup.LayoutParams lparams;
     public AdManager adManager;
@@ -93,6 +97,8 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         tv.setLayoutParams(lparams);
         tv.setText(text);
         sv.addView(tv);
+
+        util_hideKeyboard(this);
     }
 
 
@@ -113,6 +119,17 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
 
     }
 
+    public static void util_hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
 
 
     //region BANNER management from the admanager
@@ -121,7 +138,10 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
     public void loadAndShowBanner(){
 
         RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
-        RelativeLayout.LayoutParams bannerLp = new RelativeLayout.LayoutParams(640, 100);
+        Resources r = getResources();
+        float width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 320, r.getDisplayMetrics());
+        float height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, r.getDisplayMetrics());
+        RelativeLayout.LayoutParams bannerLp = new RelativeLayout.LayoutParams(Math.round(width), Math.round(height));
         bannerLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         bannerLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
         bannerView = adManager.getBanner(this);
