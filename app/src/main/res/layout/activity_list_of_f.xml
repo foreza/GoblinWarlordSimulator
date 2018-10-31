@@ -62,9 +62,10 @@
         android:id="@+id/textView2"
         android:layout_width="93dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/loadBanTest"
-        android:layout_toStartOf="@+id/floatingActionButton"
-        android:layout_toLeftOf="@+id/floatingActionButton"
+        android:layout_below="@+id/scrollView2"
+        android:layout_toStartOf="@+id/loadBanTest"
+        android:layout_toLeftOf="@+id/loadBanTest"
+        android:layout_marginTop="20dp"
         android:text="ADD TO LIST" />
 
     <ScrollView
@@ -106,13 +107,12 @@
         android:textStyle="bold|italic" />
 
 
-
     <RelativeLayout
         android:id="@+id/addAF"
         android:layout_width="match_parent"
-        android:layout_height="232dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="124dp"></RelativeLayout>
+        android:layout_height="230dp"
+        android:layout_alignTop="@+id/list_title_f">
+    </RelativeLayout>
 
 
 </RelativeLayout>
