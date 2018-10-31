@@ -161,6 +161,6 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         adManager.showBanner(bannerView);
 
     }
-    
+
 
 }
