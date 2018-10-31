@@ -17,12 +17,13 @@ import android.widget.TextView;
 
 public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
 
-    public String [] listOfFToGive = {"Job", "Food", "Roommate", "Gym and gym buddies", "Immediate Family", "EX-idtech groupies", "Legal Portal", "Car", "Good NICE music"};     // List of things we care about.
+    public String [] listOfFToGive = {"Job", "Food", "Good old fashioned Android Dev"};
     public FragmentManager fragmentManager;
     public String LOG_TAG = "[GMOR]";
     public ViewGroup.LayoutParams lparams;
     public AdManager adManager;
     public View bannerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +34,28 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         loadAndShowBanner();
     }
 
+
     @Override
     protected void onPause(){
         super.onPause();
-        pauseBanner();
+        adManager.pauseBanner(bannerView);
 
     }
+
 
     @Override
     protected void onResume(){
         super.onResume();
-        resumeBanner();
+        adManager.resumeBanner(bannerView);
+
+    }
+
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        adManager.destroyBanner(bannerView);
+
     }
 
 
@@ -149,20 +161,6 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         adManager.showBanner(bannerView);
 
     }
-
-
-    // JC: Method to pause the banner.
-    public void pauseBanner(){
-        adManager.pauseBanner(bannerView);
-    }
-
-
-    // JC: Method to resume the banner
-    public void resumeBanner(){
-        adManager.resumeBanner(bannerView);
-    }
-    //endregion
-
-
+    
 
 }

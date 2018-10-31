@@ -134,10 +134,16 @@ public class AdManager {
         resumeInMobiBanner(v);
     }
 
+    public void destroyBanner(View v){
+        Log.d(LOG_TAG, "destroyBanner called");
+        destroyInMobiBanner(v);
+    }
 
 
 
 
+
+    //   inmobi banner ad section
 
     private View createInMobiBanner(Context ctx){
         Log.d(LOG_TAG, "createInMobiBanner called");
@@ -147,20 +153,48 @@ public class AdManager {
 
     private void loadInMobiBanner(View v){
         Log.d(LOG_TAG, "showInMobiBanner called");
-        InMobiBanner banner = (InMobiBanner) v;
-        banner.load();
+
+        if (v != null) {
+            InMobiBanner banner = (InMobiBanner) v;
+            banner.load();
+        } else {
+            Log.e(LOG_TAG, "loadInMobiBanner called, but the banner was null");
+        }
+
+
     }
 
     private void pauseInMobiBanner(View v){
         Log.d(LOG_TAG, "pauseInMobiBanner called");
-        InMobiBanner banner = (InMobiBanner) v;
-        banner.pause();
+
+        if (v != null) {
+            InMobiBanner banner = (InMobiBanner) v;
+            banner.pause();
+        } else {
+            Log.e(LOG_TAG, "pauseInMobiBanner called, but the banner was null");
+
+        }
     }
 
     private void resumeInMobiBanner(View v){
         Log.d(LOG_TAG, "resumeInMobiBanner called");
-        InMobiBanner banner = (InMobiBanner) v;
-        banner.resume();
+        if (v != null) {
+            InMobiBanner banner = (InMobiBanner) v;
+            banner.resume();
+        } else {
+            Log.e(LOG_TAG, "resumeInMobiBanner called, but the banner was null");
+        }
+    }
+
+    private void destroyInMobiBanner(View v){
+        Log.d(LOG_TAG, "destroyInMobiBanner called");
+        if (v != null) {
+            InMobiBanner banner = (InMobiBanner) v;
+            banner = null; // Clean up the InMobi Banner
+        } else {
+            Log.e(LOG_TAG, "destroyInMobiBanner called, but the banner was null");
+        }
+
     }
 
 
