@@ -16,6 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:clickable="true"
+        android:onClick="openSettingsPage"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
 
     <TextView

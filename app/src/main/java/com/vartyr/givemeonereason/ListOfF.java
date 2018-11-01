@@ -1,6 +1,7 @@
 package com.vartyr.givemeonereason;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -93,6 +94,15 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         Log.d(LOG_TAG, "Created a fragment");
 
     }
+
+
+    public void openSettingsPage(View view) {
+
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+
+    }
+
 
 
     // JC: Fragment listener
