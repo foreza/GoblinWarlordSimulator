@@ -100,6 +100,17 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
 
         Intent intent = new Intent(this, Settings.class);
         startActivity(intent);
+        Log.d(LOG_TAG, "Going to settings page");
+
+
+    }
+
+    public void openHyperMonetization(View view) {
+
+        Intent intent = new Intent(this, MonetizeForMe.class);
+        startActivity(intent);
+        Log.d(LOG_TAG, "Going to monetize page");
+
 
     }
 
@@ -159,7 +170,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
     // JC: Method to load and show a banner from the ad manager
     public void loadAndShowBanner(){
 
-        RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.ad_container);
+        RelativeLayout adContainer = (RelativeLayout) findViewById(R.id.listFAdView);
         Resources r = getResources();
         float width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 320, r.getDisplayMetrics());
         float height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, r.getDisplayMetrics());

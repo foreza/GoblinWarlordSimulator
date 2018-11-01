@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ad_container"
+    android:id="@+id/listFAdView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListOfF">
@@ -103,6 +103,7 @@
         android:layout_below="@+id/scrollView2"
         android:layout_marginTop="60dp"
         android:clickable="true"
+        android:onClick="openHyperMonetization"
         android:focusable="true"
         android:text="@string/donate_to_me_pls"
         android:textStyle="bold|italic" />

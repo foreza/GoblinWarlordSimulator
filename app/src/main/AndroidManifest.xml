@@ -23,20 +23,58 @@
             android:windowSoftInputMode="stateVisible|adjustPan"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".Settings"
+        <activity
+            android:name=".Settings"
             android:parentActivityName=".ListOfF">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListOfF" />
+        </activity>
+        <activity
+            android:name=".MonetizeForMe"
+            android:parentActivityName=".ListOfF">
+
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ListOfF" />
         </activity>
 
+        <activity
+            android:name=".BannerSwiper"
+            android:parentActivityName=".MonetizeForMe">
 
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListOfF" />
+        </activity>
+
+        <activity
+            android:name=".VideoWatcher"
+            android:parentActivityName=".MonetizeForMe">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListOfF" />
+        </activity>
+
+        <activity
+            android:name=".EndlessScroller"
+            android:parentActivityName=".MonetizeForMe">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ListOfF" />
+        </activity>
         <activity
             android:name="com.inmobi.rendering.InMobiAdActivity"
             android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize|screenLayout"

@@ -25,7 +25,6 @@ public class Settings extends AppCompatActivity {
         lparams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-
         generateSettingInfo();
         addSettingToView();
     }
@@ -36,10 +35,8 @@ public class Settings extends AppCompatActivity {
     public void generateSettingInfo(){
         settingInfo = new HashMap<String, String>();
 
-        settingInfo.put("Application Version", "v0.0.0");
         settingInfo.put("InMobi SDK Version", InMobiSdk.getVersion().toString());
-
-
+        settingInfo.put("Application Version",getString(R.string.APPLICATION_VERSION));
 
     }
 
@@ -54,11 +51,7 @@ public class Settings extends AppCompatActivity {
             sv.addView(util_configureSettingListItem(entry.getKey(), entry.getValue(), lparams));
         }
     }
-
-
-    public void closeSettings(View view){
-
-    }
+    
 
 
 

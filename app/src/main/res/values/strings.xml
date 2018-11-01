@@ -6,4 +6,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="donate_to_me_pls">Watch Ads, help a hungry dev!</string>
+
+    <string name="APPLICATION_VERSION">V0.0.0</string>
+
 </resources>
