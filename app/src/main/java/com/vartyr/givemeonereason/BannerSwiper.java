@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 public class BannerSwiper extends AppCompatActivity implements MonetizedStats.OnFragmentInteractionListener {
 
     public FragmentManager fragmentManager;
-    public MonetizationManager mm;         // Singleton instance that will allow us to sync the value and increment globally
     public AdManager adManager;
     public String LOG_TAG = "[GMOR]";
     public String refTag = "BannerSwiperStat";
@@ -29,13 +28,11 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
         setContentView(R.layout.activity_banner_swiper);
 
         adManager = AdManager.getInstance();
-        mm = MonetizationManager.getInstance();
 
         mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
         fragmentManager = getSupportFragmentManager();      // Get the fragment manager
         loadStatsFragment();                                // Load the stats fragment
-        doSomeUpdateTest();
         loadBanner();
     }
 
@@ -123,21 +120,12 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
         adContainer.addView(bannerView, bannerLp);
         adManager.showBanner(bannerView);
 
-        // Increment!
-        mm.incrementNumBannerSwiped();
-//        MonetizedStats f = (MonetizedStats)getSupportFragmentManager().findFragmentById(R.id.statAF);
-
         MonetizedStats f = (MonetizedStats)getSupportFragmentManager().findFragmentByTag(refTag);
         if (f != null) {
             f.updateView();
         }
 
 
-    }
-
-
-    public void doSomeUpdateTest(){
-//        mm.incrementNumBannerSwiped();
     }
 
 }

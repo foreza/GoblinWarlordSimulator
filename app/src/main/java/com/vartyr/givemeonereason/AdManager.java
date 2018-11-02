@@ -3,16 +3,22 @@ package com.vartyr.givemeonereason;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+
+import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiBanner;
+import com.inmobi.ads.listeners.BannerAdEventListener;
 import com.inmobi.sdk.InMobiSdk;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AdManager {
+import java.util.Map;
+
+public class AdManager{
+
 
     public String LOG_TAG = "[ADMANAGER]";
-
+    public MonetizationManager mm;
 
     public String IM_ACCOUNTID = "d49db34c0ba345adb369335a51aadb7e";
     public Long IM_BANNER = 1540966827839L;
@@ -151,6 +157,54 @@ public class AdManager {
     private View createInMobiBanner(Context ctx){
         Log.d(LOG_TAG, "createInMobiBanner called");
         InMobiBanner banner = new InMobiBanner(ctx,IM_BANNER);
+
+        banner.setListener(new BannerAdEventListener() {
+            @Override
+            public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
+                super.onAdLoadSucceeded(inMobiBanner);
+                Log.d(LOG_TAG, "onAdLoadSucceeded");
+                mm = MonetizationManager.getInstance();
+                mm.incrementNumBannerSwiped();
+            }
+
+            @Override
+            public void onAdLoadFailed(InMobiBanner inMobiBanner, InMobiAdRequestStatus inMobiAdRequestStatus) {
+                super.onAdLoadFailed(inMobiBanner, inMobiAdRequestStatus);
+                Log.d(LOG_TAG, "Banner ad failed to load with error: " +
+                        inMobiAdRequestStatus.getMessage());
+            }
+
+            @Override
+            public void onAdClicked(InMobiBanner inMobiBanner, Map<Object, Object> map) {
+                super.onAdClicked(inMobiBanner, map);
+                Log.d(LOG_TAG, "onAdClicked");
+            }
+
+            @Override
+            public void onAdDisplayed(InMobiBanner inMobiBanner) {
+                super.onAdDisplayed(inMobiBanner);
+                Log.d(LOG_TAG, "onAdDisplayed");
+            }
+
+            @Override
+            public void onAdDismissed(InMobiBanner inMobiBanner) {
+                super.onAdDismissed(inMobiBanner);
+                Log.d(LOG_TAG, "onAdDismissed");
+            }
+
+            @Override
+            public void onUserLeftApplication(InMobiBanner inMobiBanner) {
+                super.onUserLeftApplication(inMobiBanner);
+                Log.d(LOG_TAG, "onUserLeftApplication");
+            }
+
+            @Override
+            public void onRewardsUnlocked(InMobiBanner inMobiBanner, Map<Object, Object> map) {
+                super.onRewardsUnlocked(inMobiBanner, map);
+                Log.d(LOG_TAG, "onRewardsUnlocked");
+            }
+        });
+
         return banner;
     }
 
@@ -201,71 +255,5 @@ public class AdManager {
     }
 
 
-
-
-
-    /*
-
-
-    LISTENER METHODS
-
-
-     */
-
-
-//
-//    /**
-//     * A listener for receiving notifications during the lifecycle of a banner ad.
-//     */
-//    public abstract class BannerAdEventListener {
-//        /**
-//         * Called to notify that an ad was successfully loaded.
-//         * @param ad Represents the {@link InMobiBanner} ad which was loaded
-//         */
-//        public void onAdLoadSucceeded(InMobiBanner ad) {}
-//
-//        /**
-//         * Called to notify that a request to load an ad failed.
-//         * @param ad Represents the {@link InMobiBanner} ad which failed to load
-//         * @param status Represents the {@link InMobiAdRequestStatus} status containing error reason
-//         */
-//        public void onAdLoadFailed(InMobiBanner ad, InMobiAdRequestStatus status) {}
-//
-//        /**
-//         * Called to notify that the user interacted with the ad.
-//         * @param ad Represents the {@link InMobiBanner} ad on which user clicked
-//         * @param params Represents the click parameters
-//         */
-//        public void onAdClicked(InMobiBanner ad, Map params) {}
-//
-//        /**
-//         * Called to notify that the banner ad was displayed
-//         * @param ad Represents the {@link InMobiBanner} ad which was displayed
-//         */
-//        public void onAdDisplayed(InMobiBanner ad) {}
-//
-//        /**
-//         * Called to notify that the User is about to return to the application after closing the ad.
-//         * @param ad Represents the {@link InMobiBanner} ad which was closed
-//         */
-//        public void onAdDismissed(InMobiBanner ad) {}
-//
-//        /**
-//         * Called to notify that the user is about to leave the application as a result of interacting with the ad.
-//         * @param ad Represents the {@link InMobiBanner} ad
-//         */
-//        public void onUserLeftApplication(InMobiBanner ad) {
-//
-//
-//
-//        }
-//
-//        /**
-//         * Called to notify that a reward was unlocked.
-//         * @param ad Represents the {@link InMobiBanner} ad for which rewards was unlocked
-//         * @param rewards Represents the rewards unlocked
-//         */
-//        public void onRewardsUnlocked(InMobiBanner ad, Map rewards) {}
-//    }
 
 }
