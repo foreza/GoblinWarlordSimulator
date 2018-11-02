@@ -9,8 +9,18 @@
     <RelativeLayout
         android:id="@+id/statAF"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_marginTop="50dp"
         android:layout_alignParentTop="true"/>
+
+
+    <RelativeLayout
+        android:id="@+id/banner_swipe_region"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/statAF"
+        />
+
 
 </android.support.constraint.ConstraintLayout>

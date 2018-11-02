@@ -16,6 +16,9 @@ public class AdManager {
 
     public String IM_ACCOUNTID = "d49db34c0ba345adb369335a51aadb7e";
     public Long IM_BANNER = 1540966827839L;
+    public Long IM_SWIPER = 1540834523205L;     // Don't use this for now.
+    public Long IM_VIDEO = 1542489410655L;      // Placeholder to use later
+
 
     // static variable single_instance of type Singleton
     private static AdManager instance = null;
