@@ -2,6 +2,7 @@ package com.vartyr.givemeonereason;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,8 +10,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-public class MonetizeForMe extends AppCompatActivity {
+public class MonetizeForMe extends AppCompatActivity implements MonetizedStats.OnFragmentInteractionListener{
 
+    public FragmentManager fragmentManager;
     public AdManager adManager;
     public View bannerView;
     public String LOG_TAG = "[GMOR]";
@@ -19,8 +21,10 @@ public class MonetizeForMe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monetize_for_me);
-        adManager = AdManager.getInstance();        // Get the instance of the ad Manager
-        loadAndShowBanner();                         // Show a banner on this view as well. Man's gotta eat!
+        fragmentManager = getSupportFragmentManager();      // Get the fragment manager
+        loadStatsFragment();                                // Load the stat fragment
+        adManager = AdManager.getInstance();                // Get the instance of the ad Manager
+        loadAndShowBanner();                                // Show a banner on this view as well. Man's gotta eat!
     }
 
 
@@ -39,6 +43,24 @@ public class MonetizeForMe extends AppCompatActivity {
         adManager.showBanner(bannerView);
 
     }
+
+    public void loadStatsFragment(){
+        fragmentManager
+                .beginTransaction()
+                .add(R.id.statAF, MonetizedStats.newInstance())
+                .commit();
+        Log.d(LOG_TAG, "Created stats fragment");
+    }
+
+    // JC: Fragment listener does nothing here for now
+    public void onFragmentInteraction(){
+
+//        fragmentManager
+//                .beginTransaction()
+//                .remove(getSupportFragmentManager().findFragmentById(R.id.addAF))
+//                .commit();
+    }
+
 
     public void openBannerSwiper(View view) {
 

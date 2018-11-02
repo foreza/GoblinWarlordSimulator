@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MonetizedStats">
+
+    <TextView
+        android:id="@+id/label_num_banner_swiped"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:text="# of Banners Swiped" />
+
+    <TextView
+        android:id="@+id/val_num_banner_swiped"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="150dp"
+        android:text="NO" />
+
+    <TextView
+        android:id="@+id/label_num_videos_watched"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="25dp"
+        android:text="# of Videos Watched" />
+
+    <TextView
+        android:id="@+id/val_num_videos_watched"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="25dp"
+        android:text="no" />
+
+    <TextView
+        android:id="@+id/label_num_endless_scrolled"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="50dp"
+        android:text="# Encounters Scrolled" />
+
+    <TextView
+        android:id="@+id/val_num_endless_scrolled"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"
+        android:text="N0000" />
+
+</FrameLayout>

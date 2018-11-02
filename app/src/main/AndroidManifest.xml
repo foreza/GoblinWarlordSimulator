@@ -30,8 +30,6 @@
         <activity
             android:name=".Settings"
             android:parentActivityName=".ListOfF">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ListOfF" />
@@ -39,8 +37,6 @@
         <activity
             android:name=".MonetizeForMe"
             android:parentActivityName=".ListOfF">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ListOfF" />
@@ -49,8 +45,6 @@
         <activity
             android:name=".BannerSwiper"
             android:parentActivityName=".MonetizeForMe">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ListOfF" />
@@ -59,8 +53,6 @@
         <activity
             android:name=".VideoWatcher"
             android:parentActivityName=".MonetizeForMe">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ListOfF" />
@@ -69,8 +61,6 @@
         <activity
             android:name=".EndlessScroller"
             android:parentActivityName=".MonetizeForMe">
-
-            <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ListOfF" />

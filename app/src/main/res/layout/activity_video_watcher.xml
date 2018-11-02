@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".VideoWatcher">
 
+    <RelativeLayout
+        android:id="@+id/statAF"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"/>
+
+
 </android.support.constraint.ConstraintLayout>

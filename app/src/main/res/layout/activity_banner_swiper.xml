@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".BannerSwiper">
 
+    <RelativeLayout
+        android:id="@+id/statAF"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"/>
+
 </android.support.constraint.ConstraintLayout>
