@@ -6,7 +6,9 @@ import android.view.View;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiBanner;
+import com.inmobi.ads.InMobiInterstitial;
 import com.inmobi.ads.listeners.BannerAdEventListener;
+import com.inmobi.ads.listeners.InterstitialAdEventListener;
 import com.inmobi.sdk.InMobiSdk;
 
 import org.json.JSONException;
@@ -108,13 +110,7 @@ public class AdManager{
     }
 
 
-    /*
-
-
-    BANNER METHODS
-
-
-     */
+    /* BANNER METHODS */
 
 
 
@@ -149,6 +145,46 @@ public class AdManager{
     }
 
 
+
+    /* BANNER METHODS */
+
+
+
+
+
+    public Object getInterstitial(Context ctx){
+        Log.d(LOG_TAG, "getInterstitial called");
+        return createInMobiInterstitial(ctx);
+    }
+
+    public void preloadInterstitial(Object o){
+        Log.d(LOG_TAG, "preloadInterstitial called");
+        preloadInMobiInterstitial(o);
+    }
+
+    public void showInterstitial(Object o){
+        Log.d(LOG_TAG, "showInterstitial called");
+        showInMobiInterstitial(o);
+    }
+
+    public void pauseInterstitial(Object o){
+        Log.d(LOG_TAG, "pauseInterstitial called");
+        // Doesn't do anything right now
+        pauseInMobiInterstitial(o);
+
+    }
+
+    public void resumeInterstitial(Object o){
+        Log.d(LOG_TAG, "resumeInterstitial called");
+        // Doesn't do anything right now
+        resumeInMobiInterstitial(o);
+    }
+
+    public void cleanupInterstitial(Object o){
+        Log.d(LOG_TAG, "cleanupInterstitial called");
+        destroyInMobiInterstitial(o);
+
+    }
 
 
 
@@ -264,6 +300,134 @@ public class AdManager{
         }
 
     }
+
+
+    private Object createInMobiInterstitial(Context ctx) {
+
+        Log.d(LOG_TAG, "createInMobiInterstitial called");
+
+        InMobiInterstitial interstitialAd = new InMobiInterstitial(ctx, IM_VIDEO, new InterstitialAdEventListener() {
+            @Override
+            public void onAdLoadSucceeded(InMobiInterstitial inMobiInterstitial) {
+                super.onAdLoadSucceeded(inMobiInterstitial);
+            }
+
+            @Override
+            public void onAdLoadFailed(InMobiInterstitial inMobiInterstitial, InMobiAdRequestStatus inMobiAdRequestStatus) {
+                super.onAdLoadFailed(inMobiInterstitial, inMobiAdRequestStatus);
+            }
+
+            @Override
+            public void onAdReceived(InMobiInterstitial inMobiInterstitial) {
+                super.onAdReceived(inMobiInterstitial);
+            }
+
+            @Override
+            public void onAdClicked(InMobiInterstitial inMobiInterstitial, Map<Object, Object> map) {
+                super.onAdClicked(inMobiInterstitial, map);
+            }
+
+            @Override
+            public void onAdWillDisplay(InMobiInterstitial inMobiInterstitial) {
+                super.onAdWillDisplay(inMobiInterstitial);
+
+            }
+
+            @Override
+            public void onAdDisplayed(InMobiInterstitial inMobiInterstitial) {
+                super.onAdDisplayed(inMobiInterstitial);
+                mm = MonetizationManager.getInstance();
+                mm.incrementNumVideosWatched();
+            }
+
+            @Override
+            public void onAdDisplayFailed(InMobiInterstitial inMobiInterstitial) {
+                super.onAdDisplayFailed(inMobiInterstitial);
+            }
+
+            @Override
+            public void onAdDismissed(InMobiInterstitial inMobiInterstitial) {
+                super.onAdDismissed(inMobiInterstitial);
+            }
+
+            @Override
+            public void onUserLeftApplication(InMobiInterstitial inMobiInterstitial) {
+                super.onUserLeftApplication(inMobiInterstitial);
+            }
+
+            @Override
+            public void onRewardsUnlocked(InMobiInterstitial inMobiInterstitial, Map<Object, Object> map) {
+                super.onRewardsUnlocked(inMobiInterstitial, map);
+            }
+
+            @Override
+            public void onRequestPayloadCreated(byte[] bytes) {
+                super.onRequestPayloadCreated(bytes);
+            }
+
+            @Override
+            public void onRequestPayloadCreationFailed(InMobiAdRequestStatus inMobiAdRequestStatus) {
+                super.onRequestPayloadCreationFailed(inMobiAdRequestStatus);
+            }
+        });
+
+        return interstitialAd;
+    }
+
+
+    private void preloadInMobiInterstitial(Object o){
+        Log.d(LOG_TAG, "preloadInMobiInterstitial called");
+        if (o != null) {
+            InMobiInterstitial interstitial = (InMobiInterstitial) o;
+            interstitial.load();
+        }
+    }
+
+
+    private void showInMobiInterstitial(Object o){
+        Log.d(LOG_TAG, "showInMobiInterstitial called");
+
+        if (o != null) {
+            InMobiInterstitial interstitial = (InMobiInterstitial) o;
+            if (interstitial.isReady()){
+                interstitial.show();
+            } else {
+                Log.e(LOG_TAG, "showInMobiInterstitial , but interstitial was not ready!");
+            }
+        }
+
+    }
+
+
+    // JC: Unused method, we cannot control inmobi vids
+    private void pauseInMobiInterstitial(Object o){
+        Log.d(LOG_TAG, "pauseInMobiInterstitial called");
+        if (o != null) {
+            InMobiInterstitial interstitial = (InMobiInterstitial) o;
+
+        }
+
+
+    }
+
+    // JC: Unused method, we cannot control inmobi vids
+    private void resumeInMobiInterstitial(Object o){
+        Log.d(LOG_TAG, "resumeInMobiInterstitial called");
+        if (o != null) {
+            InMobiInterstitial interstitial = (InMobiInterstitial) o;
+
+        }
+    }
+
+    private void destroyInMobiInterstitial(Object o){
+        Log.d(LOG_TAG, "destroyInMobiInterstitial called");
+        if (o != null) {
+            InMobiInterstitial interstitial = (InMobiInterstitial) o;
+            interstitial = null;
+        }
+    }
+
+
 
 
 
