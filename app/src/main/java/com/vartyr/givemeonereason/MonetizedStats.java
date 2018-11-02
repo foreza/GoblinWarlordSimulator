@@ -13,7 +13,7 @@ public class MonetizedStats extends Fragment {
 
 
     MonetizationManager mm;         // Singleton instance that will allow us to sync the value and increment globally
-
+    View currentView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -43,35 +43,30 @@ public class MonetizedStats extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View fragmentView = inflater.inflate(R.layout.fragment_monetized_stats, container, false);
-
-
-
-         updateView(fragmentView);
-
-        return fragmentView;
+        currentView = inflater.inflate(R.layout.fragment_monetized_stats, container, false);
+        updateView();
+        return currentView;
     }
 
-
-
     // Method to update the view
-    public void updateView(View view){
-
-
+    public void updateView(){
 
         // UPDATE THE ITEMS
 
         mm = MonetizationManager.getInstance();
 
-
-        TextView tv1 = (TextView)view.findViewById(R.id.val_num_banner_swiped);
+        TextView tv1 = (TextView)currentView.findViewById(R.id.val_num_banner_swiped);
         tv1.setText(mm.getNumBannerSwiped());
 
-        TextView tv2 = (TextView)view.findViewById(R.id.val_num_videos_watched);
+        TextView tv2 = (TextView)currentView.findViewById(R.id.val_num_videos_watched);
         tv2.setText(mm.getNumVideosWatched());
 
-        TextView tv3 = (TextView)view.findViewById(R.id.val_num_endless_scrolled);
+        TextView tv3 = (TextView)currentView.findViewById(R.id.val_num_endless_scrolled);
         tv3.setText(mm.getNumEncountersScrolled());
+
+    }
+
+    public static void doTheThing(){
 
     }
 
@@ -79,6 +74,7 @@ public class MonetizedStats extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {

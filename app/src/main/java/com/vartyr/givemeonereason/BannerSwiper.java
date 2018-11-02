@@ -2,10 +2,13 @@ package com.vartyr.givemeonereason;
 
 import android.content.res.Resources;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -15,6 +18,8 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
     public MonetizationManager mm;         // Singleton instance that will allow us to sync the value and increment globally
     public AdManager adManager;
     public String LOG_TAG = "[GMOR]";
+    public String refTag = "BannerSwiperStat";
+    private GestureDetectorCompat mDetector;    // Detect flings
 
     public View bannerView;
 
@@ -25,10 +30,37 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
 
         adManager = AdManager.getInstance();
         mm = MonetizationManager.getInstance();
+
+        mDetector = new GestureDetectorCompat(this, new MyGestureListener());
+
         fragmentManager = getSupportFragmentManager();      // Get the fragment manager
         loadStatsFragment();                                // Load the stats fragment
         doSomeUpdateTest();
         loadBanner();
+    }
+
+
+    public boolean onTouchEvent(MotionEvent event){
+        this.mDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+        private static final String DEBUG_TAG = "Gestures";
+
+        @Override
+        public boolean onDown(MotionEvent event) {
+            Log.d(LOG_TAG,"onDown: " + event.toString());
+            return true;
+        }
+
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2,
+                               float velocityX, float velocityY) {
+            Log.d(LOG_TAG, "onFling: " + event1.toString() + event2.toString());
+            loadBanner();
+            return true;
+        }
     }
 
     @Override
@@ -56,9 +88,11 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
 
 
     public void loadStatsFragment(){
+
+
         fragmentManager
                 .beginTransaction()
-                .add(R.id.statAF, MonetizedStats.newInstance())
+                .add(R.id.statAF, MonetizedStats.newInstance(), refTag)
                 .commit();
         Log.d(LOG_TAG, "Created stats fragment");
     }
@@ -89,8 +123,17 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
         adContainer.addView(bannerView, bannerLp);
         adManager.showBanner(bannerView);
 
-    }
+        // Increment!
+        mm.incrementNumBannerSwiped();
+//        MonetizedStats f = (MonetizedStats)getSupportFragmentManager().findFragmentById(R.id.statAF);
 
+        MonetizedStats f = (MonetizedStats)getSupportFragmentManager().findFragmentByTag(refTag);
+        if (f != null) {
+            f.updateView();
+        }
+
+
+    }
 
 
     public void doSomeUpdateTest(){
