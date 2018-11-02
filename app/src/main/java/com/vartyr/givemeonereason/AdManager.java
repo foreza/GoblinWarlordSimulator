@@ -122,9 +122,9 @@ public class AdManager{
 
 
 
-    public View getBanner(Context ctx){
+    public View getBanner(Context ctx, int mode){
         Log.d(LOG_TAG, "getBanner called");
-        return createInMobiBanner(ctx);
+        return createInMobiBanner(ctx, mode);
     }
 
 
@@ -154,17 +154,28 @@ public class AdManager{
 
     //   inmobi banner ad section
 
-    private View createInMobiBanner(Context ctx){
+    private View createInMobiBanner(Context ctx, int mode){
         Log.d(LOG_TAG, "createInMobiBanner called");
-        InMobiBanner banner = new InMobiBanner(ctx,IM_BANNER);
+
+        InMobiBanner banner;
+
+        if (mode == 0){
+            banner = new InMobiBanner(ctx,IM_BANNER);
+            Log.d(LOG_TAG, "createInMobiBanner IM_BANNER: " + IM_BANNER.toString());
+        } else if (mode == 1) {
+            banner = new InMobiBanner(ctx,IM_SWIPER);
+            Log.d(LOG_TAG, "createInMobiBanner IM_SWIPER: " + IM_SWIPER.toString());
+        } else {
+            banner = new InMobiBanner(ctx,IM_BANNER);
+        }
 
         banner.setListener(new BannerAdEventListener() {
             @Override
             public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
                 super.onAdLoadSucceeded(inMobiBanner);
-                Log.d(LOG_TAG, "onAdLoadSucceeded");
-                mm = MonetizationManager.getInstance();
-                mm.incrementNumBannerSwiped();
+                    mm = MonetizationManager.getInstance();
+                    mm.incrementNumBannerSwiped();
+
             }
 
             @Override
@@ -204,7 +215,7 @@ public class AdManager{
                 Log.d(LOG_TAG, "onRewardsUnlocked");
             }
         });
-
+        banner.setRefreshInterval(0);
         return banner;
     }
 

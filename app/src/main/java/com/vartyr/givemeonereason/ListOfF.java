@@ -177,7 +177,7 @@ public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentIntera
         RelativeLayout.LayoutParams bannerLp = new RelativeLayout.LayoutParams(Math.round(width), Math.round(height));
         bannerLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         bannerLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        bannerView = adManager.getBanner(this);
+        bannerView = adManager.getBanner(this, 0);      // Mode 0 will be the bottom banner
         adContainer.addView(bannerView, bannerLp);
         adManager.showBanner(bannerView);
 

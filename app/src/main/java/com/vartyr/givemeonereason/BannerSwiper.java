@@ -116,7 +116,7 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
         bannerLp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
         bannerLp.setMargins(0,Math.round(margin),0, Math.round(margin));
         bannerLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        bannerView = adManager.getBanner(this);
+        bannerView = adManager.getBanner(this, 1);      // Mode == 1 is the MREC
         adContainer.addView(bannerView, bannerLp);
         adManager.showBanner(bannerView);
 

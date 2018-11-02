@@ -38,7 +38,8 @@ public class MonetizeForMe extends AppCompatActivity implements MonetizedStats.O
         RelativeLayout.LayoutParams bannerLp = new RelativeLayout.LayoutParams(Math.round(width), Math.round(height));
         bannerLp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         bannerLp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        bannerView = adManager.getBanner(this);
+        bannerView = adManager.getBanner(this, 0); // bottom banner
+
         adContainer.addView(bannerView, bannerLp);
         adManager.showBanner(bannerView);
 
