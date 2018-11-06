@@ -1,4 +1,4 @@
-package com.vartyr.givemeonereason;
+package com.vartyr.goblinwarlordsimulator;
 
 import android.content.Intent;
 import android.content.res.Resources;

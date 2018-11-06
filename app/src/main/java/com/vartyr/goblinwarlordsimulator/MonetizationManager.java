@@ -1,4 +1,4 @@
-package com.vartyr.givemeonereason;
+package com.vartyr.goblinwarlordsimulator;
 
 public class MonetizationManager {
 

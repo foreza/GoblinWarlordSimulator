@@ -1,4 +1,4 @@
-package com.vartyr.givemeonereason;
+package com.vartyr.goblinwarlordsimulator;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-public class ListOfF extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
+public class GameClicker extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
 
     public String [] listOfFToGive = {"Job", "Food", "Good old fashioned Android Dev"};
     public FragmentManager fragmentManager;

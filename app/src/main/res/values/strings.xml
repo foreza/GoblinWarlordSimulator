@@ -1,14 +1,12 @@
 <resources>
-    <string name="app_name">Life Budget Tracker</string>
+    <string name="app_name">Goblin Warlord Simulator</string>
     <string name="counter_f_text"># left in my budget </string>
     <string name="counter_f_num">things</string>
     <string name="list_title_f">A list of things to care about:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="donate_to_me_pls">Watch Ads, help a hungry dev!</string>
-
+    <string name="donate_to_me_pls">Earn Quick Gold (Watch Ads)</string>
     <string name="APPLICATION_VERSION">V0.0.0</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

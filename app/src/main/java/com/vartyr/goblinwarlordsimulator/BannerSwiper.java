@@ -1,4 +1,4 @@
-package com.vartyr.givemeonereason;
+package com.vartyr.goblinwarlordsimulator;
 
 import android.content.res.Resources;
 import android.support.v4.app.FragmentManager;
