@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class MonetizedStats extends Fragment {
 
 
-    MonetizationManager mm;         // Singleton instance that will allow us to sync the value and increment globally
+    GameStateManager mm;         // Singleton instance that will allow us to sync the value and increment globally
     View currentView;
 
     private OnFragmentInteractionListener mListener;
@@ -53,16 +53,16 @@ public class MonetizedStats extends Fragment {
 
         // UPDATE THE ITEMS
 
-        mm = MonetizationManager.getInstance();
+        mm = GameStateManager.getInstance();
 
         TextView tv1 = (TextView)currentView.findViewById(R.id.val_num_banner_swiped);
-        tv1.setText(mm.getNumBannerSwiped());
+        tv1.setText(mm.getDisplay_NumBannerSwiped());
 
         TextView tv2 = (TextView)currentView.findViewById(R.id.val_num_videos_watched);
-        tv2.setText(mm.getNumVideosWatched());
+        tv2.setText(mm.getDisplay_NumVideosWatched());
 
         TextView tv3 = (TextView)currentView.findViewById(R.id.val_num_endless_scrolled);
-        tv3.setText(mm.getNumEncountersScrolled());
+        tv3.setText(mm.getDisplay_NumEncountersScrolled());
 
     }
 

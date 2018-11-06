@@ -20,7 +20,7 @@ public class AdManager{
 
 
     public String LOG_TAG = "[ADMANAGER]";
-    public MonetizationManager mm;
+    public GameStateManager mm;
 
     public String IM_ACCOUNTID = "d49db34c0ba345adb369335a51aadb7e";
     public Long IM_BANNER = 1540966827839L;
@@ -209,7 +209,7 @@ public class AdManager{
             @Override
             public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
                 super.onAdLoadSucceeded(inMobiBanner);
-                    mm = MonetizationManager.getInstance();
+                    mm = GameStateManager.getInstance();
                     mm.incrementNumBannerSwiped();
 
             }
@@ -336,7 +336,7 @@ public class AdManager{
             @Override
             public void onAdDisplayed(InMobiInterstitial inMobiInterstitial) {
                 super.onAdDisplayed(inMobiInterstitial);
-                mm = MonetizationManager.getInstance();
+                mm = GameStateManager.getInstance();
                 mm.incrementNumVideosWatched();
             }
 
