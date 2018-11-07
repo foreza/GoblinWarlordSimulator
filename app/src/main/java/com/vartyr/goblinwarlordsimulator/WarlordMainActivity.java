@@ -11,6 +11,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,9 @@ public class WarlordMainActivity extends AppCompatActivity implements AddAF.OnFr
     public View bannerView;
 
 
+    public ImageView [] explosionViews;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,7 @@ public class WarlordMainActivity extends AppCompatActivity implements AddAF.OnFr
         initApp();
         generateListOfF();
         loadAndShowBanner();
+        updateLabels();
     }
 
 
@@ -48,6 +53,7 @@ public class WarlordMainActivity extends AppCompatActivity implements AddAF.OnFr
     protected void onResume(){
         super.onResume();
         adManager.resumeBanner(bannerView);
+        updateLabels();
 
     }
 
@@ -69,6 +75,41 @@ public class WarlordMainActivity extends AppCompatActivity implements AddAF.OnFr
         fragmentManager = getSupportFragmentManager();
         lparams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+
+
+
+        // Set up our explosions
+
+        ImageView iv1 = findViewById(R.id.explosion_1);
+        ImageView iv2 = findViewById(R.id.explosion_2);
+        ImageView iv3 = findViewById(R.id.explosion_3);
+
+        explosionViews = new ImageView[3];
+        explosionViews[0] = iv1;
+        explosionViews[1] = iv2;
+        explosionViews[2] = iv3;
+
+        TextView tv_ce = findViewById(R.id.label_currency_earned);
+        String tv_cetext = String.valueOf(tv_ce.getText());
+        tv_ce.setText(gsm.currencyName + " " + tv_cetext);
+
+    }
+
+
+    public void updateGameLoop(){
+
+        // TODO: do more of these!
+        updateLabels();
+    }
+
+    public void updateLabels(){
+
+        TextView tv1 = findViewById(R.id.damage_done);
+        tv1.setText(gsm.getDisplay_NumDamageDealt());
+        TextView tv2 = findViewById(R.id.currency_earned);
+        tv2.setText(gsm.getDisplay_NumCurrency());
+
     }
 
 
@@ -105,6 +146,8 @@ public class WarlordMainActivity extends AppCompatActivity implements AddAF.OnFr
         // TEST: For alpha, we'll just do this in the main view.
         gsm.incrementTotalDamage();
         gsm.incrementTotalCurrency();
+        showRandomExplosionInView();
+        updateGameLoop();
     }
 
 
@@ -130,6 +173,24 @@ public class WarlordMainActivity extends AppCompatActivity implements AddAF.OnFr
         Intent intent = new Intent(this, ContactActivity.class);
         startActivity(intent);
         Log.d(LOG_TAG, "Going to contact page");
+
+
+    }
+
+    public void openDetailedStatsPage(View view) {
+
+        Intent intent = new Intent(this, DetailedStatsActivity.class);
+        startActivity(intent);
+        Log.d(LOG_TAG, "Going to detailed stats page");
+
+
+    }
+
+    public void openUpgradePage(View view) {
+
+        Intent intent = new Intent(this, UpgradesActivity.class);
+        startActivity(intent);
+        Log.d(LOG_TAG, "Going to upgrade page");
 
 
     }
@@ -167,6 +228,27 @@ public class WarlordMainActivity extends AppCompatActivity implements AddAF.OnFr
 
 
 
+    public void showRandomExplosionInView(){
+
+        int i = util_genRandomNumWithRange(0, 3);
+
+        ImageView iv = explosionViews[i];
+
+        if (iv.getVisibility() == View.VISIBLE){
+            iv.setVisibility(View.INVISIBLE);
+        } else {
+            iv.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+
+
+
+
+    public int util_genRandomNumWithRange(int min, int range){
+        return (int)(Math.random() * range) + min;
+    }
 
 
     // JC: Util function that will return a TextView to be appended into the view

@@ -34,7 +34,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
         </activity>
-
         <activity
             android:name=".SettingActivity"
             android:parentActivityName=".WarlordMainActivity">
@@ -42,9 +41,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
         </activity>
-
-
-        <activity android:name=".ContactActivity"
+        <activity
+            android:name=".ContactActivity"
+            android:parentActivityName=".WarlordMainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
+        </activity>
+        <activity
+            android:name=".DetailedStatsActivity"
+            android:parentActivityName=".WarlordMainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
+        </activity>
+        <activity
+            android:name=".UpgradesActivity"
             android:parentActivityName=".WarlordMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -85,9 +97,11 @@
             android:resizeableActivity="false"
             android:theme="@android:style/Theme.NoTitleBar"
             tools:ignore="UnusedAttribute" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
     </application>
 
 </manifest>

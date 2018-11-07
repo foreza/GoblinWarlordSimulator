@@ -46,11 +46,8 @@
         android:id="@+id/warlord_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/app_info"
         android:text="@string/label_for_warlord_title"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +89,86 @@
         android:onClick="clickInteraction"
         android:layout_centerInParent="true"
         app:srcCompat="@drawable/sample_hut" />
+
+    <ImageView
+        android:id="@+id/explosion_3"
+        android:layout_width="189dp"
+        android:layout_height="115dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/villageView"
+        android:layout_marginStart="58dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/explosion" />
+
+    <ImageView
+        android:id="@+id/explosion_2"
+        android:layout_width="189dp"
+        android:layout_height="115dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/detailed_stats"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/explosion" />
+
+    <ImageView
+        android:id="@+id/explosion_1"
+        android:layout_width="189dp"
+        android:layout_height="115dp"
+        android:layout_alignEnd="@+id/currency_earned"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="184dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/explosion" />
+
+    <TextView
+        android:id="@+id/view_upgrades"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/detailed_stats"
+        android:clickable="true"
+        android:onClick="openUpgradePage"
+        android:text="@string/label_upgrade" />
+
+    <TextView
+        android:id="@+id/detailed_stats"
+        android:layout_width="149dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="103dp"
+        android:clickable="true"
+        android:onClick="openDetailedStatsPage"
+        android:text="@string/label_detailedStats" />
+
+    <TextView
+        android:id="@+id/currency_earned"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/damage_done"
+        android:layout_below="@+id/label_currency_earned" />
+
+    <TextView
+        android:id="@+id/label_currency_earned"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/damage_done"
+        android:text="@string/label_currencyEarned" />
+
+    <TextView
+        android:id="@+id/damage_done"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/label_damage_done"
+        android:layout_toStartOf="@+id/label_button_campaign" />
+
+    <TextView
+        android:id="@+id/label_damage_done"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/warlord_title"
+        android:text="@string/label_damageDealt" />
 
 
 </RelativeLayout>
