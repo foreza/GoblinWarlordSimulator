@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listFAdView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WarlordMainActivity">
+
+
+    <TextView
+        android:id="@+id/app_contact"
+        android:layout_width="118dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/app_settings"
+        android:clickable="true"
+        android:onClick="openContactPage"
+        android:text="@string/label_contact" />
+
+    <TextView
+        android:id="@+id/app_settings"
+        android:layout_width="118dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/app_info"
+        android:clickable="true"
+        android:onClick="openSettingPage"
+        android:text="@string/label_settings" />
+
+    <TextView
+        android:id="@+id/app_info"
+        android:layout_width="118dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:onClick="openInfoPage"
+        android:text="@string/label_info" />
+
+    <TextView
+        android:id="@+id/warlord_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/label_for_warlord_title"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/enter_campaign"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="55dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="openHyperMonetization"
+        app:backgroundTint="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/label_button_campaign"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="64dp"
+        android:layout_toStartOf="@+id/enter_campaign"
+        android:layout_toLeftOf="@id/enter_campaign"
+        android:text="@string/label_for_campaign" />
+
+    <ImageView
+        android:id="@+id/villageView"
+        android:layout_width="330dp"
+        android:layout_height="180dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="clickInteraction"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/sample_hut" />
+
+
+</RelativeLayout>

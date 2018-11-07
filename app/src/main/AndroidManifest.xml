@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <activity android:name="com.vartyr.goblinwarlordsimulator.GameClicker">
+        <activity android:name=".WarlordMainActivity">
             android:windowSoftInputMode="stateVisible|adjustPan"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,42 +28,55 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.vartyr.goblinwarlordsimulator.Settings"
-            android:parentActivityName="com.vartyr.goblinwarlordsimulator.GameClicker">
+            android:name=".InfoActivity"
+            android:parentActivityName=".WarlordMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />
-        </activity>
-        <activity
-            android:name="com.vartyr.goblinwarlordsimulator.WarlordMonetize"
-            android:parentActivityName="com.vartyr.goblinwarlordsimulator.GameClicker">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
         </activity>
 
         <activity
-            android:name="com.vartyr.goblinwarlordsimulator.BannerSwiper"
-            android:parentActivityName="com.vartyr.goblinwarlordsimulator.WarlordMonetize">
+            android:name=".SettingActivity"
+            android:parentActivityName=".WarlordMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
         </activity>
 
-        <activity
-            android:name="com.vartyr.goblinwarlordsimulator.VideoWatcher"
-            android:parentActivityName="com.vartyr.goblinwarlordsimulator.WarlordMonetize">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />
-        </activity>
 
-        <activity
-            android:name="com.vartyr.goblinwarlordsimulator.EndlessScroller"
-            android:parentActivityName="com.vartyr.goblinwarlordsimulator.WarlordMonetize">
+        <activity android:name=".ContactActivity"
+            android:parentActivityName=".WarlordMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
+        </activity>
+        <activity
+            android:name=".WarlordMonetize"
+            android:parentActivityName=".WarlordMainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
+        </activity>
+        <activity
+            android:name=".BannerSwiper"
+            android:parentActivityName=".WarlordMonetize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
+        </activity>
+        <activity
+            android:name=".VideoWatcher"
+            android:parentActivityName=".WarlordMonetize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
+        </activity>
+        <activity
+            android:name=".EndlessScroller"
+            android:parentActivityName=".WarlordMonetize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.vartyr.goblinwarlordsimulator.WarlordMainActivity" />
         </activity>
         <activity
             android:name="com.inmobi.rendering.InMobiAdActivity"
@@ -72,11 +85,9 @@
             android:resizeableActivity="false"
             android:theme="@android:style/Theme.NoTitleBar"
             tools:ignore="UnusedAttribute" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
     </application>
 
 </manifest>

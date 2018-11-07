@@ -10,9 +10,9 @@ import com.inmobi.sdk.InMobiSdk;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Settings extends AppCompatActivity {
+public class InfoActivity extends AppCompatActivity {
 
-    public Map<String, String> settingInfo;     // Settings map
+    public Map<String, String> infoParams;     // InfoActivity map
     public ViewGroup.LayoutParams lparams;
 
     @Override
@@ -25,29 +25,29 @@ public class Settings extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         generateSettingInfo();
-        addSettingToView();
+        addInfoItemToView();
     }
 
 
 
     // JC: TODO: Do my method calls here for the various version of SDK
     public void generateSettingInfo(){
-        settingInfo = new HashMap<String, String>();
+        infoParams = new HashMap<String, String>();
 
-        settingInfo.put("InMobi SDK Version", InMobiSdk.getVersion().toString());
-        settingInfo.put("Application Version",getString(R.string.APPLICATION_VERSION));
+        infoParams.put("InMobi Ads SDK Version", InMobiSdk.getVersion().toString());
+        infoParams.put("Application Version",getString(R.string.APPLICATION_VERSION));
 
     }
 
 
     // JC: This will add the settings to the view as dynamic elements
-    public void addSettingToView() {
+    public void addInfoItemToView() {
 
         LinearLayout sv = findViewById(R.id.settingInfoList);
 
         // Iterate through all the list items and add them top the view.
-        for (Map.Entry<String, String> entry : settingInfo.entrySet()) {
-            sv.addView(util_configureSettingListItem(entry.getKey(), entry.getValue(), lparams));
+        for (Map.Entry<String, String> entry : infoParams.entrySet()) {
+            sv.addView(util_configureInfoListItem(entry.getKey(), entry.getValue(), lparams));
         }
     }
     
@@ -55,7 +55,7 @@ public class Settings extends AppCompatActivity {
 
 
     // JC: Util function that will return a TextView to be appended into the view
-    public TextView util_configureSettingListItem(String key, String val, ViewGroup.LayoutParams lp) {
+    public TextView util_configureInfoListItem(String key, String val, ViewGroup.LayoutParams lp) {
 
         TextView tv = new TextView(this);
         tv.setClickable(true);

@@ -11,16 +11,16 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-public class GameClicker extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
+public class WarlordMainActivity extends AppCompatActivity implements AddAF.OnFragmentInteractionListener{
 
-    public String [] listOfFToGive = {"Job", "Food", "Good old fashioned Android Dev"};
+//    public String [] listOfFToGive = {"Job", "Food", "Good old fashioned Android Dev"};
     public FragmentManager fragmentManager;
-    public String LOG_TAG = "[GMOR]";
+    public GameStateManager gsm;
+    public String LOG_TAG = "[WarlordMainActivity]";
     public ViewGroup.LayoutParams lparams;
     public AdManager adManager;
     public View bannerView;
@@ -29,7 +29,7 @@ public class GameClicker extends AppCompatActivity implements AddAF.OnFragmentIn
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_of_f);
+        setContentView(R.layout.warlord_main);
         initApp();
         generateListOfF();
         loadAndShowBanner();
@@ -63,6 +63,7 @@ public class GameClicker extends AppCompatActivity implements AddAF.OnFragmentIn
     // JC: A function that will do variable assignment for the scope of this class and init all ad sdks from adManager
     public void initApp() {
 
+        gsm = GameStateManager.getInstance();           // Get the game state manager instance on init
         adManager = AdManager.getInstance();
         adManager.initAdSDK(this);
         fragmentManager = getSupportFragmentManager();
@@ -74,38 +75,66 @@ public class GameClicker extends AppCompatActivity implements AddAF.OnFragmentIn
     // JC: This will dynamically generate the list of F and add them to the the scroll view.
     public void generateListOfF() {
 
-        LinearLayout sv = findViewById(R.id.listOfF);
+//        LinearLayout sv = findViewById(R.id.listOfF);
 
         // Iterate through all the list items and add them top the view.
-        for (int i = 0; i < listOfFToGive.length; ++i) {
-            sv.addView(util_configureFListItem(listOfFToGive[i], lparams));
-        }
+//        for (int i = 0; i < listOfFToGive.length; ++i) {
+//            sv.addView(util_configureFListItem(listOfFToGive[i], lparams));
+//        }
+
+
     }
 
 
     // JC: This function will be triggered by pressing the button on the lower right.
     // It will start a fragment to allow you to add something.
-    public void addNewFToListOfF(View view) {
+//    public void addNewFToListOfF(View view) {
+//
+//        fragmentManager
+//                .beginTransaction()
+//                .add(R.id.addAF, AddAF.newInstance())
+//                .commit();
+//        Log.d(LOG_TAG, "Created a fragment");
+//
+//    }
 
-        fragmentManager
-                .beginTransaction()
-                .add(R.id.addAF, AddAF.newInstance())
-                .commit();
-        Log.d(LOG_TAG, "Created a fragment");
 
+    public void clickInteraction(View view){
+        Log.d(LOG_TAG, "Click detected on image");
+
+        // TEST: For alpha, we'll just do this in the main view.
+        gsm.incrementTotalDamage();
+        gsm.incrementTotalCurrency();
     }
 
 
-    public void openSettingsPage(View view) {
+    public void openInfoPage(View view) {
 
-        Intent intent = new Intent(this, Settings.class);
+        Intent intent = new Intent(this, InfoActivity.class);
         startActivity(intent);
-        Log.d(LOG_TAG, "Going to settings page");
+        Log.d(LOG_TAG, "Going to info page");
 
 
     }
 
-    public void openHyperMonetization(View view) {
+    public void openSettingPage(View view) {
+
+        Intent intent = new Intent(this, SettingActivity.class);
+        startActivity(intent);
+        Log.d(LOG_TAG, "Going to setting page");
+    }
+
+
+    public void openContactPage(View view) {
+
+        Intent intent = new Intent(this, ContactActivity.class);
+        startActivity(intent);
+        Log.d(LOG_TAG, "Going to contact page");
+
+
+    }
+
+        public void openHyperMonetization(View view) {
 
         Intent intent = new Intent(this, WarlordMonetize.class);
         startActivity(intent);
@@ -116,20 +145,22 @@ public class GameClicker extends AppCompatActivity implements AddAF.OnFragmentIn
 
 
 
+
+
     // JC: Fragment listener
     public void onFragmentInteraction(String text){
+//
+//        fragmentManager
+//                .beginTransaction()
+//                .remove(getSupportFragmentManager().findFragmentById(R.id.addAF))
+//                .commit();
 
-        fragmentManager
-                .beginTransaction()
-                .remove(getSupportFragmentManager().findFragmentById(R.id.addAF))
-                .commit();
+      //   LinearLayout sv = findViewById(R.id.listOfF);
 
-        LinearLayout sv = findViewById(R.id.listOfF);
-
-        TextView tv=new TextView(this);
-        tv.setLayoutParams(lparams);
-        tv.setText(text);
-        sv.addView(tv);
+//        TextView tv=new TextView(this);
+//        tv.setLayoutParams(lparams);
+//        tv.setText(text);
+//        sv.addView(tv);
 
         util_hideKeyboard(this);
     }

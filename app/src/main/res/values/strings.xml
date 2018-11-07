@@ -2,12 +2,24 @@
     <string name="app_name">Goblin Warlord Simulator</string>
     <string name="counter_f_text"># left in my budget </string>
     <string name="counter_f_num">things</string>
-    <string name="list_title_f">A list of things to care about:</string>
 
 
     <string name="donate_to_me_pls">Earn Quick Gold (Watch Ads)</string>
     <string name="APPLICATION_VERSION">V0.0.0</string>
 
+
+    <!--Warlord Main Activity-->
+    <string name="label_for_campaign">Campaign for Loot!</string>
+    <string name="label_for_warlord_title">Welcome, Warlord!</string>
+
+    <string name="label_info">View Info</string>
+    <string name="label_settings">Options/Privacy</string>
+    <string name="label_contact">Contact</string>
+
+    <string name="label_damageDealt">Damage Done: </string>
+    <string name="label_currencyEarned">Earned: </string>
+    <string name="label_detailedStats">View Detailed Stats</string>
+    <string name="label_upgrade">View Upgrades</string>
 
     <!--Monetize For Me Activity-->
     <string name="label_for_banner_swiper">RUMMAGE for Treasure</string>
