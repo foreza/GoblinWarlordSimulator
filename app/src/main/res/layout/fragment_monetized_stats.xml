@@ -3,24 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MonetizedStats">
+    tools:context=".FragmentWarlordMonetizedStats">
 
     <TextView
         android:id="@+id/label_num_banner_swiped"
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:layout_height="25dp"
         android:textAlignment="center"
         android:layout_marginLeft="10dp"
         android:background="@color/colorPrimaryDark"
         android:textColor="@android:color/background_light"
-        android:text="# of Banners Seen"
+        android:text="@string/label_for_banner_count"
          />
 
     <TextView
         android:id="@+id/val_num_banner_swiped"
-        android:layout_width="150dp"
+        android:layout_width="110dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="210dp"
+        android:layout_marginLeft="250dp"
         android:textAlignment="center"
         android:background="@color/colorPrimaryDark"
         android:textColor="@android:color/background_light"
@@ -28,20 +28,20 @@
 
     <TextView
         android:id="@+id/label_num_videos_watched"
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:layout_height="25dp"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="10dp"
         android:textAlignment="center"
         android:background="@color/colorPrimaryDark"
         android:textColor="@android:color/background_light"
-        android:text="# of Videos Watched" />
+        android:text="@string/label_for_video_count" />
 
     <TextView
         android:id="@+id/val_num_videos_watched"
-        android:layout_width="150dp"
+        android:layout_width="110dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="210dp"
+        android:layout_marginLeft="250dp"
         android:layout_marginTop="25dp"
         android:textAlignment="center"
         android:background="@color/colorPrimaryDark"
@@ -49,22 +49,45 @@
         android:text="no" />
 
     <TextView
-        android:id="@+id/label_num_endless_scrolled"
-        android:layout_width="200dp"
+        android:id="@+id/label_num_total_currency"
+        android:layout_width="240dp"
         android:layout_height="25dp"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
         android:textAlignment="center"
         android:background="@color/colorPrimaryDark"
         android:textColor="@android:color/background_light"
-        android:text="# of Scrolled Encounters" />
+        android:text="@string/label_for_total_currency" />
 
     <TextView
-        android:id="@+id/val_num_endless_scrolled"
-        android:layout_width="150dp"
+        android:id="@+id/val_num_total_currency"
+        android:layout_width="110dp"
         android:layout_height="25dp"
-        android:layout_marginLeft="210dp"
+        android:layout_marginLeft="250dp"
         android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_light"
+        android:text="N0000" />
+
+
+    <TextView
+        android:id="@+id/label_num_total_damage"
+        android:layout_width="240dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="10dp"
+        android:textAlignment="center"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_light"
+        android:text="@string/label_for_total_damage" />
+
+    <TextView
+        android:id="@+id/val_num_total_damage"
+        android:layout_width="110dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="75dp"
         android:textAlignment="center"
         android:background="@color/colorPrimaryDark"
         android:textColor="@android:color/background_light"

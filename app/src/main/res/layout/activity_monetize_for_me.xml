@@ -5,24 +5,38 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:id="@+id/monetizeAdView"
-tools:context=".MonetizeForMe">
+tools:context=".WarlordMonetize">
 
     <TextView
-    android:id="@+id/monetize_intro_text"
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="0dp"
-    android:text="CHOOSE YOUR MODE"
-    android:textAlignment="center"
-    android:textSize="30sp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/monetize_intro_desc"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/monetize_intro_text"
+        android:text="@string/notice_for_monetization_mode"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/monetize_intro_text"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/title_for_monetization_mode"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/banner_swiper"
@@ -33,46 +47,47 @@ tools:context=".MonetizeForMe">
         android:layout_marginTop="250dp"
         android:clickable="true"
         android:onClick="openBannerSwiper"
-        android:text="THE BANNER SWIPER"
+        android:text="@string/label_for_banner_swiper"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/banner_swiper_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/banner_swiper"
+        android:text="@string/description_for_banner_swiper" />
 
     <Button
         android:id="@+id/video_watcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_alignStart="@+id/banner_swiper"
+        android:layout_alignLeft="@id/banner_swiper"
+        android:layout_below="@+id/banner_swiper_desc"
         android:clickable="true"
         android:onClick="openVideoWatcher"
-        android:text="WATCH A VIDEO"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endless_scroller" />
+        android:text="@string/label_for_video_watcher"
+        app:layout_constraintTop_toTopOf="@+id/banner_swiper_desc" />
 
-    <Button
-        android:id="@+id/endless_scroller"
+    <TextView
+        android:id="@+id/video_watcher_desc2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
-        android:clickable="true"
-        android:onClick="openEndlessScroller"
-        android:text="ENDLESS SCROLL"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/video_watcher" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/video_watcher"
+        android:text="@string/description_for_video_watcher" />
 
     <RelativeLayout
         android:id="@+id/statAF"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentTop="true"/>
-
 
 
 </RelativeLayout>

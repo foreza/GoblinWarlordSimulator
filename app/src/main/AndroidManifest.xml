@@ -35,7 +35,7 @@
                 android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />
         </activity>
         <activity
-            android:name="com.vartyr.goblinwarlordsimulator.MonetizeForMe"
+            android:name="com.vartyr.goblinwarlordsimulator.WarlordMonetize"
             android:parentActivityName="com.vartyr.goblinwarlordsimulator.GameClicker">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -44,7 +44,7 @@
 
         <activity
             android:name="com.vartyr.goblinwarlordsimulator.BannerSwiper"
-            android:parentActivityName="com.vartyr.goblinwarlordsimulator.MonetizeForMe">
+            android:parentActivityName="com.vartyr.goblinwarlordsimulator.WarlordMonetize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />
@@ -52,7 +52,7 @@
 
         <activity
             android:name="com.vartyr.goblinwarlordsimulator.VideoWatcher"
-            android:parentActivityName="com.vartyr.goblinwarlordsimulator.MonetizeForMe">
+            android:parentActivityName="com.vartyr.goblinwarlordsimulator.WarlordMonetize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />
@@ -60,7 +60,7 @@
 
         <activity
             android:name="com.vartyr.goblinwarlordsimulator.EndlessScroller"
-            android:parentActivityName="com.vartyr.goblinwarlordsimulator.MonetizeForMe">
+            android:parentActivityName="com.vartyr.goblinwarlordsimulator.WarlordMonetize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.vartyr.goblinwarlordsimulator.GameClicker" />

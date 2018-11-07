@@ -12,7 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-public class BannerSwiper extends AppCompatActivity implements MonetizedStats.OnFragmentInteractionListener {
+public class BannerSwiper extends AppCompatActivity implements FragmentWarlordMonetizedStats.OnFragmentInteractionListener {
 
     public FragmentManager fragmentManager;
     public AdManager adManager;
@@ -89,7 +89,7 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
 
         fragmentManager
                 .beginTransaction()
-                .add(R.id.statAF, MonetizedStats.newInstance(), refTag)
+                .add(R.id.statAF, FragmentWarlordMonetizedStats.newInstance(), refTag)
                 .commit();
         Log.d(LOG_TAG, "Created stats fragment");
     }
@@ -120,7 +120,7 @@ public class BannerSwiper extends AppCompatActivity implements MonetizedStats.On
         adContainer.addView(bannerView, bannerLp);
         adManager.showBanner(bannerView);
 
-        MonetizedStats f = (MonetizedStats)getSupportFragmentManager().findFragmentByTag(refTag);
+        FragmentWarlordMonetizedStats f = (FragmentWarlordMonetizedStats)getSupportFragmentManager().findFragmentByTag(refTag);
         if (f != null) {
             f.updateView();
         }

@@ -4,10 +4,26 @@
     <string name="counter_f_num">things</string>
     <string name="list_title_f">A list of things to care about:</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="donate_to_me_pls">Earn Quick Gold (Watch Ads)</string>
     <string name="APPLICATION_VERSION">V0.0.0</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--Monetize For Me Activity-->
+    <string name="label_for_banner_swiper">RUMMAGE for Treasure</string>
+    <string name="description_for_banner_swiper">Note: Rummaging for treasure will take you to a mode where there will be some swipable ads. Swipe left or right to add to your stash. </string>
+
+    <string name="label_for_video_watcher">Consult the Goblin Seer</string>
+    <string name="description_for_video_watcher">Note: Consulting the goblin seer will show you some advertisements. Watch the advertisement to the end and the goblin seer will reward you with a vision of treasure.</string>
+
+    <string name="title_for_monetization_mode">Quick Campaigns</string>
+    <string name="notice_for_monetization_mode">Note: To add to your stash quickly, you can select one of the options below to see an advertisement.</string>
+
+    <!--Monetized Stats Fragment-->
+    <string name="label_for_banner_count"># Banners raised: </string>
+    <string name="label_for_video_count"># Scrolls read: </string>
+    <string name="label_for_total_currency">Total Current Stash: </string>
+    <string name="label_for_total_damage">Total Damage Dealt: </string>
+
 
 </resources>

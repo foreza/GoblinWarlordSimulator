@@ -107,7 +107,7 @@ public class GameClicker extends AppCompatActivity implements AddAF.OnFragmentIn
 
     public void openHyperMonetization(View view) {
 
-        Intent intent = new Intent(this, MonetizeForMe.class);
+        Intent intent = new Intent(this, WarlordMonetize.class);
         startActivity(intent);
         Log.d(LOG_TAG, "Going to monetize page");
 

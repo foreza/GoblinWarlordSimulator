@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class MonetizedStats extends Fragment {
+// THIS FRAGMENT WILL BE SHOWN ON ALL VIEWS besides the main view
+
+public class FragmentWarlordMonetizedStats extends Fragment {
 
 
     GameStateManager mm;         // Singleton instance that will allow us to sync the value and increment globally
@@ -17,14 +19,14 @@ public class MonetizedStats extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MonetizedStats() {
+    public FragmentWarlordMonetizedStats() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static MonetizedStats newInstance() {
-        MonetizedStats fragment = new MonetizedStats();
+    public static FragmentWarlordMonetizedStats newInstance() {
+        FragmentWarlordMonetizedStats fragment = new FragmentWarlordMonetizedStats();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -61,12 +63,15 @@ public class MonetizedStats extends Fragment {
         TextView tv2 = (TextView)currentView.findViewById(R.id.val_num_videos_watched);
         tv2.setText(mm.getDisplay_NumVideosWatched());
 
-        TextView tv3 = (TextView)currentView.findViewById(R.id.val_num_endless_scrolled);
-        tv3.setText(mm.getDisplay_NumEncountersScrolled());
+        TextView tv3 = (TextView)currentView.findViewById(R.id.val_num_total_currency);
+        tv3.setText(mm.getDisplay_NumCurrency());
 
-    }
+        TextView tv4 = (TextView)currentView.findViewById(R.id.val_num_total_damage);
+        tv4.setText(mm.getDisplay_NumDamageDealt());
 
-    public static void doTheThing(){
+        // TODO: Impelement this at some point
+//        TextView tv3 = (TextView)currentView.findViewById(R.id.val_num_endless_scrolled);
+//        tv3.setText(mm.getDisplay_NumEncountersScrolled());
 
     }
 

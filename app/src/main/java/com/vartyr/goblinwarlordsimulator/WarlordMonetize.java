@@ -10,7 +10,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-public class MonetizeForMe extends AppCompatActivity implements MonetizedStats.OnFragmentInteractionListener{
+public class WarlordMonetize extends AppCompatActivity implements FragmentWarlordMonetizedStats.OnFragmentInteractionListener{
 
     public FragmentManager fragmentManager;
     public AdManager adManager;
@@ -48,7 +48,7 @@ public class MonetizeForMe extends AppCompatActivity implements MonetizedStats.O
     public void loadStatsFragment(){
         fragmentManager
                 .beginTransaction()
-                .add(R.id.statAF, MonetizedStats.newInstance())
+                .add(R.id.statAF, FragmentWarlordMonetizedStats.newInstance())
                 .commit();
         Log.d(LOG_TAG, "Created stats fragment");
     }

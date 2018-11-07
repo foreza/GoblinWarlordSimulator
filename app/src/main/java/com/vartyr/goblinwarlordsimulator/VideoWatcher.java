@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-public class VideoWatcher extends AppCompatActivity implements MonetizedStats.OnFragmentInteractionListener {
+public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMonetizedStats.OnFragmentInteractionListener {
 
     public FragmentManager fragmentManager;
     public AdManager adManager;
@@ -32,7 +32,7 @@ public class VideoWatcher extends AppCompatActivity implements MonetizedStats.On
     protected void onResume(){
         super.onResume();
 
-        MonetizedStats f = (MonetizedStats)getSupportFragmentManager().findFragmentByTag(refTag);
+        FragmentWarlordMonetizedStats f = (FragmentWarlordMonetizedStats)getSupportFragmentManager().findFragmentByTag(refTag);
         if (f != null) {
             f.updateView();
         }
@@ -41,7 +41,7 @@ public class VideoWatcher extends AppCompatActivity implements MonetizedStats.On
     public void loadStatsFragment(){
         fragmentManager
                 .beginTransaction()
-                .add(R.id.statAF, MonetizedStats.newInstance(), refTag)
+                .add(R.id.statAF, FragmentWarlordMonetizedStats.newInstance(), refTag)
                 .commit();
         Log.d(LOG_TAG, "Created stats fragment");
     }
