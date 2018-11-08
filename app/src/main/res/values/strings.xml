@@ -38,4 +38,11 @@
     <string name="label_for_total_damage">Total Damage Dealt: </string>
 
 
+    <!-- Video Watcher Activity -->
+
+    <string name="label_for_play_video">Video is Ready!</string>
+    <string name="label_for_load_video">Load a Video!</string>
+    <string name="explanation_for__video">Thanks for supporting us. Watching videos allows us to bring you new features and content. :) </string>
+
+
 </resources>

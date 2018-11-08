@@ -1,5 +1,7 @@
 package com.vartyr.goblinwarlordsimulator;
 
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,10 +10,23 @@ import android.view.View;
 
 public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMonetizedStats.OnFragmentInteractionListener {
 
+
+
+
+
     public FragmentManager fragmentManager;
     public AdManager adManager;
-    public String LOG_TAG = "[GMOR]";
+    AdManager.OnPreloadCallbackHandler adListener;
+    public String LOG_TAG = "[VidWatcherStat]";
     public String refTag = "VidWatcherStat";
+
+    public boolean preloadReady = false;
+
+
+
+
+
+
 
     Object interstitialObject;          // Generic object to hold any type of interstitial we plan to show.
 
@@ -22,9 +37,28 @@ public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMo
 
 
         adManager = AdManager.getInstance();
+        adManager.setPreloadCallbackListener(new AdManager.OnPreloadCallbackHandler() {
+            @Override
+            public void onPreloadReady() {
+                // do the thing
+                Log.d(LOG_TAG, "onPreloadReady received!!");
+                preloadReady = true;
+                updateButtonStateInView();
+            }
+        });
 
         fragmentManager = getSupportFragmentManager();
         loadStatsFragment();
+
+        // Begin preloading an interstitial on view creation.
+
+        interstitialObject = adManager.getInterstitial(this);
+        adManager.preloadInterstitial(interstitialObject);
+
+        // Make sure the view is up to date.
+        updateButtonStateInView();
+
+
 
     }
 
@@ -54,18 +88,32 @@ public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMo
 
 
     public void showInterstitial(View view){
-        adManager.showInterstitial(interstitialObject);
-
+        if (preloadReady){
+            adManager.showInterstitial(interstitialObject);
+            preloadReady = false;
+            updateButtonStateInView();
+        }
     }
 
-    public void onFragmentInteraction(){
-
-//        fragmentManager
-//                .beginTransaction()
-//                .remove(getSupportFragmentManager().findFragmentById(R.id.addAF))
-//                .commit();
+    public void updateButtonStateInView(){
+        if (preloadReady){
+            findViewById(R.id.video_play).setVisibility(View.VISIBLE);
+            findViewById(R.id.video_load).setVisibility(View.INVISIBLE);
+        } else
+        {
+            findViewById(R.id.video_play).setVisibility(View.INVISIBLE);
+            findViewById(R.id.video_load).setVisibility(View.VISIBLE);
+        }
     }
 
+
+    public void onFragmentInteraction(){ }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
 
 

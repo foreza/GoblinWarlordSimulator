@@ -28,6 +28,23 @@ public class AdManager{
     public Long IM_VIDEO = 1542489410655L;      // Placeholder to use later
 
 
+    // Listener interface
+    public interface OnPreloadCallbackHandler  {
+        public void onPreloadReady();
+    }
+
+    // Instance of handler
+    private OnPreloadCallbackHandler listener;
+
+
+    // Method for people to call to invoke
+    public void setPreloadCallbackListener(OnPreloadCallbackHandler listener) {
+        this.listener = listener;
+    }
+
+
+
+
     // static variable single_instance of type Singleton
     private static AdManager instance = null;
 
@@ -38,8 +55,9 @@ public class AdManager{
     // static method to create instance of Singleton class
     public static AdManager getInstance()
     {
-        if (instance == null)
+        if (instance == null){
             instance = new AdManager();
+        }
 
         return instance;
     }
@@ -108,6 +126,9 @@ public class AdManager{
     public void updateGDPRConsent_InMobi(JSONObject consentObject){
         InMobiSdk.updateGDPRConsent(consentObject);
     }
+
+
+
 
 
     /* BANNER METHODS */
@@ -310,6 +331,8 @@ public class AdManager{
             @Override
             public void onAdLoadSucceeded(InMobiInterstitial inMobiInterstitial) {
                 super.onAdLoadSucceeded(inMobiInterstitial);
+                Log.d(LOG_TAG, "onAdLoadSucceeded called, called listener on preload ready");
+                listener.onPreloadReady();
             }
 
             @Override
