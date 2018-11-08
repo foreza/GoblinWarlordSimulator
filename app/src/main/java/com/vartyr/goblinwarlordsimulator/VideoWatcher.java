@@ -21,7 +21,7 @@ public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMo
     public String refTag = "VidWatcherStat";
 
     public boolean preloadReady = false;
-
+    public boolean isPreloading = false;
 
 
 
@@ -43,6 +43,7 @@ public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMo
                 // do the thing
                 Log.d(LOG_TAG, "onPreloadReady received!!");
                 preloadReady = true;
+                isPreloading = false;
                 updateButtonStateInView();
             }
         });
@@ -84,6 +85,8 @@ public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMo
     public void preloadInterstitial(View view){
         interstitialObject = adManager.getInterstitial(this);
         adManager.preloadInterstitial(interstitialObject);
+        isPreloading = true;
+        updateButtonStateInView();
     }
 
 
@@ -91,18 +94,24 @@ public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMo
         if (preloadReady){
             adManager.showInterstitial(interstitialObject);
             preloadReady = false;
+            isPreloading = false;
             updateButtonStateInView();
         }
     }
 
     public void updateButtonStateInView(){
-        if (preloadReady){
+        if (preloadReady && !isPreloading){
             findViewById(R.id.video_play).setVisibility(View.VISIBLE);
             findViewById(R.id.video_load).setVisibility(View.INVISIBLE);
-        } else
-        {
+            findViewById(R.id.loadingSpinner).setVisibility(View.INVISIBLE);
+        } else if (!preloadReady && isPreloading) { // NOTE: The IM SDK precaches, so there's no way to see this unless we wipe app data
+            findViewById(R.id.video_play).setVisibility(View.INVISIBLE);
+            findViewById(R.id.video_load).setVisibility(View.INVISIBLE);
+            findViewById(R.id.loadingSpinner).setVisibility(View.VISIBLE);
+        } else {
             findViewById(R.id.video_play).setVisibility(View.INVISIBLE);
             findViewById(R.id.video_load).setVisibility(View.VISIBLE);
+            findViewById(R.id.loadingSpinner).setVisibility(View.INVISIBLE);
         }
     }
 
