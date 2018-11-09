@@ -2,10 +2,9 @@
     <string name="app_name">Goblin Warlord Simulator</string>
     <string name="counter_f_text"># left in my budget </string>
     <string name="counter_f_num">things</string>
-
-
     <string name="donate_to_me_pls">Earn Quick Gold (Watch Ads)</string>
     <string name="APPLICATION_VERSION">V0.0.0</string>
+    <string name="placeholder_soon">More coming soon!</string>
 
 
     <!--Warlord Main Activity-->
@@ -52,5 +51,43 @@
     <string name="explanation_for__swiper">Thanks for supporting us. Each successful banner view allows us, the app devs, to bring you more happiness.</string>
 
 
+    <!--Detailed Stats-->
+
+    <string name="label_title_detailedStats">Detailed Stats</string>
+
+
+    <!--Upgrades -->
+
+
+    <string name="label_title_upgrades">Purchase Upgrades</string>
+
+
+    <!-- Contact-->
+
+    <string name="label_title_contact">CONTACT</string>
+    <string name="explanation_contact">Our application is in alpha. Please excuse the lack of content! We are aggressively developing more content.</string>
+    <string name="label_info_contact">For any comments / concerns, please reach out to:</string>
+    <string name="value_info_contact">jforeza@gmail.com</string>
+
+    <!-- Info-->
+
+    <string name="label_title_info">Application Information</string>
+
+    <!-- Setting-->
+
+    <string name="label_title_setting">Options / Privacy </string>
+    <string name="privacy_policy">Privacy Policy
+Effective date: November 09, 2018
+
+Goblin Warlord Simulator ("us", "we", or "our") operates the Goblin Warlord Simulator mobile application (the "Service").
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien pellentesque habitant morbi tristique senectus et. Magna fermentum iaculis eu non diam phasellus. Nulla facilisi nullam vehicula ipsum a arcu cursus vitae. Integer vitae justo eget magna fermentum. Risus nullam eget felis eget nunc lobortis. Etiam erat velit scelerisque in dictum non. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. Arcu felis bibendum ut tristique. Amet risus nullam eget felis eget nunc. Semper quis lectus nulla at volutpat diam ut venenatis. Nulla posuere sollicitudin aliquam ultrices sagittis orci. Tortor id aliquet lectus proin. Neque aliquam vestibulum morbi blandit cursus risus at. Praesent elementum facilisis leo vel fringilla. Tortor consequat id porta nibh. Diam phasellus vestibulum lorem sed risus ultricies.
+We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy.
+
+You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+
+Contact Us
+If you have any questions about this Privacy Policy, please contact us:
+
+By email: jforeza@gmail.com</string>
 
 </resources>
