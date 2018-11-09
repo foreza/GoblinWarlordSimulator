@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/statAF"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="125dp"
         android:layout_marginTop="50dp"
         android:layout_alignParentTop="true"/>
 
@@ -18,10 +18,54 @@
     <RelativeLayout
         android:id="@+id/banner_swipe_region"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@+id/statAF"
-        />
+        >
+
+        <TextView
+            android:id="@+id/swipe_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/label_for_swipe_bottom"
+            android:textAlignment="center"
+            android:textColor="@drawable/common_google_signin_btn_text_light"
+            android:textSize="30sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/swipe_top"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/label_for_swipe_top"
+            android:textAlignment="center"
+            android:textColor="@drawable/common_google_signin_btn_text_light"
+            android:textSize="30sp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/swiper_explanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:textAlignment="center"
+        android:text="@string/explanation_for__swiper"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

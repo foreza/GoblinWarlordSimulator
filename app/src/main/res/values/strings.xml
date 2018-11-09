@@ -45,4 +45,12 @@
     <string name="explanation_for__video">Thanks for supporting us. Watching videos allows us to bring you new features and content. :) </string>
 
 
+    <!-- Banner Swiper Activity -->
+
+    <string name="label_for_swipe_top"> SWIPE ALONG HERE</string>
+    <string name="label_for_swipe_bottom">EITHER DIRECTION IS FINE</string>
+    <string name="explanation_for__swiper">Thanks for supporting us. Each successful banner view allows us, the app devs, to bring you more happiness.</string>
+
+
+
 </resources>

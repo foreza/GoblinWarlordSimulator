@@ -232,8 +232,9 @@ public class AdManager{
                 super.onAdLoadSucceeded(inMobiBanner);
                 Log.d(LOG_TAG, "onAdLoadSucceeded");
                     gameStateManager = GameStateManager.getInstance();
-                    gameStateManager.incrementNumBannerSwiped();
-                    gameStateManager.increaseTotalCurrencyByProvidedAmount(gameStateManager.BANNER_SWIPED_CURRENCY_AMT);
+                gameStateManager.incrementNumBannerSwiped();
+                gameStateManager.increaseTotalCurrencyByProvidedAmount(gameStateManager.BANNER_SWIPED_CURRENCY_AMT);
+
 
             }
 
@@ -274,7 +275,7 @@ public class AdManager{
                 Log.d(LOG_TAG, "onRewardsUnlocked");
             }
         });
-        banner.setRefreshInterval(0);
+        banner.setRefreshInterval(10000);
         return banner;
     }
 
