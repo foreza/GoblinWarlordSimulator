@@ -21,6 +21,12 @@ public class GameStateManager {
 
 
 
+    public int BANNER_SWIPED_CURRENCY_AMT = 50;
+    public int VIDEO_REWARD_CURRENCY_AMT = 1000;
+
+
+
+
     // static variable single_instance of type Singleton
     private static GameStateManager instance = null;
 
@@ -131,8 +137,17 @@ public class GameStateManager {
         Log.d(LOG_TAG, "incrementTotalDamage increment by : " + numAmountToDamage + " updated total : " + numDamageDealt);
     }
 
+    // Method to increment the currency by @numIncrementCurrencyAmt. Call this method to increment the currency on some behavior.
+    public void increaseTotalCurrencyByProvidedAmount(int i){
+        numCurrency+= i;
+        Log.d(LOG_TAG, "incrementTotalCurrency increase by : " + i +  " updated total : " + numCurrency);
+    }
 
-
+    // Method to increment the damage by @numAmountToDamage. Call this method to increment the damage done to "whatever"
+    public void increaseTotalDamageByProvidedAmount(int i){
+        numDamageDealt+= i;
+        Log.d(LOG_TAG, "incrementTotalDamage increase by : " + i + " updated total : " + numDamageDealt);
+    }
 
 
     // DECREMENTORS
@@ -169,12 +184,12 @@ public class GameStateManager {
         currencyName = s;
     }
 
-    // Method to update the TOTAL currency amount
+    // Method to set the TOTAL currency amount
     public void setNumCurrency(int v){
         numCurrency = v;
     }
 
-    // Method to update the TOTAL amount of damage done
+    // Method to set the TOTAL amount of damage done
     public void setNumDamage(int v){
         numDamageDealt = v;
     }

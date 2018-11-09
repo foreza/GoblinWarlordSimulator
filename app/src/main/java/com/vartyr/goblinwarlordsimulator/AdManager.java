@@ -20,7 +20,7 @@ public class AdManager{
 
 
     public String LOG_TAG = "[ADMANAGER]";
-    public GameStateManager mm;
+    public GameStateManager gameStateManager;
 
     public String IM_ACCOUNTID = "d49db34c0ba345adb369335a51aadb7e";
     public Long IM_BANNER = 1540966827839L;
@@ -230,8 +230,10 @@ public class AdManager{
             @Override
             public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
                 super.onAdLoadSucceeded(inMobiBanner);
-                    mm = GameStateManager.getInstance();
-                    mm.incrementNumBannerSwiped();
+                Log.d(LOG_TAG, "onAdLoadSucceeded");
+                    gameStateManager = GameStateManager.getInstance();
+                    gameStateManager.incrementNumBannerSwiped();
+                    gameStateManager.increaseTotalCurrencyByProvidedAmount(gameStateManager.BANNER_SWIPED_CURRENCY_AMT);
 
             }
 
@@ -359,8 +361,9 @@ public class AdManager{
             @Override
             public void onAdDisplayed(InMobiInterstitial inMobiInterstitial) {
                 super.onAdDisplayed(inMobiInterstitial);
-                mm = GameStateManager.getInstance();
-                mm.incrementNumVideosWatched();
+                gameStateManager = GameStateManager.getInstance();
+                gameStateManager.incrementNumVideosWatched();
+                gameStateManager.increaseTotalCurrencyByProvidedAmount(gameStateManager.VIDEO_REWARD_CURRENCY_AMT);
             }
 
             @Override
