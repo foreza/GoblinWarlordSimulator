@@ -1,7 +1,5 @@
 package com.vartyr.goblinwarlordsimulator;
 
-import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,23 +8,13 @@ import android.view.View;
 
 public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMonetizedStats.OnFragmentInteractionListener {
 
-
-
-
-
     public FragmentManager fragmentManager;
     public AdManager adManager;
-    AdManager.OnPreloadCallbackHandler adListener;
     public String LOG_TAG = "[VidWatcherStat]";
     public String refTag = "VidWatcherStat";
 
     public boolean preloadReady = false;
     public boolean isPreloading = false;
-
-
-
-
-
 
     Object interstitialObject;          // Generic object to hold any type of interstitial we plan to show.
 
@@ -34,19 +22,23 @@ public class VideoWatcher extends AppCompatActivity implements FragmentWarlordMo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_watcher);
-
-
         adManager = AdManager.getInstance();
-        adManager.setPreloadCallbackListener(new AdManager.OnPreloadCallbackHandler() {
+
+        // OnPreloadReady will be fired by the AdManager. We need to listen for it and react accordingly.
+        // Here, we'll toggle some states and update the view so that the user can show the interstitial.
+
+        adManager.setPreloadCallbackListener(new OnPreloadCallbackHandler() {
             @Override
-            public void onPreloadReady() {
-                // do the thing
-                Log.d(LOG_TAG, "onPreloadReady received!!");
+            public void onInterstitialPreloadReady() {
+                Log.d(LOG_TAG, "onInterstitialPreloadReady received!!");
+
                 preloadReady = true;
                 isPreloading = false;
                 updateButtonStateInView();
             }
         });
+
+        Log.d(LOG_TAG, "setPreloadCallbackListener called in VideoWatcher");
 
         fragmentManager = getSupportFragmentManager();
         loadStatsFragment();
