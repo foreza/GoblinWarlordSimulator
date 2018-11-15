@@ -17,6 +17,8 @@ public class AdManager{
     // TODO: All the various different admanagers should be declared here
     public InMobiCustomAdManager IMADManager;       // Reference to our InMobi Custom Ad manager
 
+    public AdMobCustomAdManager AMADManager;        // Reference to our AdMob Custom Ad Manager
+
 
     // Method for people to call to invoke
     public void setPreloadCallbackListener(OnPreloadCallbackHandler listener) {
@@ -24,6 +26,8 @@ public class AdManager{
 
         // TODO: Each AdManager should be subscribed to the listener
         IMADManager.setCustomListener(listener);
+
+        AMADManager.setCustomListener(listener);
     }
 
 
@@ -56,7 +60,8 @@ public class AdManager{
         IMADManager = new InMobiCustomAdManager();
         IMADManager.initCustomSDK(ctx);
 
-
+        AMADManager = new AdMobCustomAdManager();
+        AMADManager.initCustomSDK(ctx);
 
         // TODO: Implement logic to let us dynamically swap out different ad managers.
 
@@ -68,7 +73,10 @@ public class AdManager{
     private void setCurrentCustomAdManager(){
 
         // Phase 1: We currently only support InMobi
-        customAdManager = (CustomAdManager) IMADManager;
+//        customAdManager = (CustomAdManager) IMADManager;
+
+
+        customAdManager = (CustomAdManager) AMADManager;
 
     }
 
